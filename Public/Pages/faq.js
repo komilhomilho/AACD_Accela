@@ -1,4 +1,4 @@
-const main = document.createElement('main')
+const main = document.querySelector('main');
 main.innerHTML = `<div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
