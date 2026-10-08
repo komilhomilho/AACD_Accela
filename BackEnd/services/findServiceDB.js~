@@ -1,0 +1,10 @@
+const log = console.log
+
+export default async function findService(object){
+    try {
+	log(`Buscando...`)
+	
+    }catch (err){
+	return err
+    }
+}

@@ -1,0 +1,5 @@
+import servicos from '../services/servicesOffered.js'
+
+export default async function findServicesController(req, res){
+    servicos.findService()
+}
