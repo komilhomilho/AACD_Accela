@@ -1,3 +1,12 @@
 .cor_vermelha {
     background-color: #72101D;
 }
+.accordion-button {
+    color: white;
+}
+.accordion-button.cor_vermelha,
+.accordion-button.cor_vermelha:not(.collapsed) {
+    background-color: #72101D !important;
+    color: white !important;
+    box-shadow: none;
+}
