@@ -15,7 +15,7 @@ botaoLogin.addEventListener('click', function () {
         alert("Por favor, preencha todos os campos!");
     }
     else if (email === "a" && senha === "a") {
-        switchPage('home');
+        switchPage('faq');
 
     } else {
         alert("Email ou senha incorretos.");

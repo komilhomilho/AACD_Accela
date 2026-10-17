@@ -24,4 +24,4 @@ export async function switchPage(idDaPagina) {
     }
 }
 
-switchPage('login');
+switchPage('home');

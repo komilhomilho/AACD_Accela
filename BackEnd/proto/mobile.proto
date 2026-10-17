@@ -1,11 +1,7 @@
 syntax = "proto3";
 
-// Esse nome 'api' é o que você vai usar lá no backend para importar
 package api;
 
-// ==========================================
-// SERVIÇO DE USUÁRIOS
-// ==========================================
 service UsuarioService {
   rpc BuscarUsuario (UsuarioRequest) returns (UsuarioResponse);
 }
@@ -25,12 +21,10 @@ service ServicoDeServicos {
   rpc ListarComprasDoUsuario (ComprasRequest) returns (ComprasResponse);
 }
 
-// A requisição que o mobile manda
 message BuscaServicoRequest {
-  string pesquisa = 1; // Equivalente ao req.body.pesquisa do seu REST
+  string pesquisa = 1; 
 }
 
-// O que volta pro mobile
 message ServicoResponse {
   string id = 1;
   string nomeDoServico = 2;
@@ -42,6 +36,5 @@ message ComprasRequest {
 }
 
 message ComprasResponse {
-  // repeated significa "Um array (lista) de strings"
   repeated string listaDeCompras = 1; 
 }
