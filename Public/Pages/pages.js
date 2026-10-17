@@ -2,9 +2,11 @@ export const mapsPages = {
     "login": {
         "html": `
             <h1>Faça seu Login</h1>
-            <input type="email" id="email" placeholder="Digite seu email">
-            <input type="password" id="password" placeholder="Digite sua senha">
-            <button id="login">Login</button>
+            <input type="email" id="email" placeholder="Digite seu email" style="background-color: #72101D;">
+            <input type="password" id="password" placeholder="Digite sua senha" style="background-color: #72101D;">
+            <button id="login" style="background-color: #72101D;">Login</button>
+            <button id="register" style="background-color: #72101D;">Criar Conta</button>
+
         `,
         "js": "./login.js"
     },

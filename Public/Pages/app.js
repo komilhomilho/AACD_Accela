@@ -4,7 +4,7 @@ const app = document.getElementById('app');
 
 export async function switchPage(idDaPagina) {
     const dadosDaPagina = mapsPages[idDaPagina];
-    
+
     if (!dadosDaPagina) {
         app.innerHTML = "<h1>Erro</h1><p>Página não encontrada.</p>";
         return;
