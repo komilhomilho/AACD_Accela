@@ -71,3 +71,37 @@
         transform: rotate(360deg);
     }
 }
+/* Espaçamento entre as caixas do FAQ */
+.accordion-item {
+    margin-bottom: 15px;
+    border-radius: 15px !important;
+    overflow: hidden;
+    border: 1px solid #72101D;
+}
+
+/* Arredondamento dos botões */
+.accordion-button {
+    border-radius: 15px !important;
+}
+
+/* Quando expandido, arredonda apenas a parte superior */
+.accordion-button:not(.collapsed) {
+    border-radius: 15px 15px 0 0 !important;
+}
+
+/* Arredondamento inferior da resposta */
+.accordion-body {
+    background-color: #d3d3d3;
+    color: #333333;
+    border-radius: 0 0 15px 15px;
+}
+
+/* Remove as bordas automáticas entre itens do Bootstrap */
+.accordion-item + .accordion-item {
+    border-top: 1px solid #72101D;
+    margin-top: 15px;
+}
+.accordion h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
