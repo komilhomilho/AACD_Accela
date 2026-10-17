@@ -105,3 +105,11 @@
     font-size: 3.5rem;
     font-weight: bold;
 }
+/* Setas brancas */
+.accordion-button::after {
+    filter: brightness(0) invert(1) !important;
+}
+/* Manter as setas brancas ao expandir */
+.accordion-button:not(.collapsed)::after {
+    filter: brightness(0) invert(1) !important;
+}
