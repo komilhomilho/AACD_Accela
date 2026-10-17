@@ -13,7 +13,7 @@ botaoLogin.addEventListener('click', function () {
     console.log("Email Digitado:", email);
     console.log("Senha Digitada:", senha);
 
-    if (email === null || senha === null) {
+    if (email === "" || senha === "") {
         alert("Por favor, preencha todos os campos!");
     }
     else if (email === "a" && senha === "a") {

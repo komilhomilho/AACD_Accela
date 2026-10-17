@@ -1,11 +1,60 @@
 export const mapsPages = {
     "login": {
         "html": `
-            <h1>Faça seu Login</h1>
-            <input type="email" id="email" placeholder="Digite seu email" style="background-color: #72101D;">
-            <input type="password" id="password" placeholder="Digite sua senha" style="background-color: #72101D;">
-            <button id="login" style="background-color: #72101D;">Login</button>
-            <button id="register" style="background-color: #72101D;">Criar Conta</button>
+
+    <style>
+   
+        .form-container {
+            display: flex;
+            flex-direction: column; 
+            gap: 15px;             
+            width: 100%;
+            max-width: 400px;      
+            box-sizing: border-box;
+        }
+
+      
+        .form-container input, 
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        
+        .form-container button {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        
+        input::placeholder {
+            color: white;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Faça seu Login</h1>
+    <div class="form-container">
+        <input type="email" id="email" placeholder="Digite seu email" style="background-color: #72101D; color: white;">
+        <input type="password" id="password" placeholder="Digite sua senha" style="background-color: #72101D; color: white;">
+        
+        <button id="login" style="background-color: #72101D; color: white;">Login</button>
+        <button id="register" style="background-color: #72101D; color: white;">Criar Conta</button>
+        <button></button>
+        <button></button>
+    </div>
+
+</body>
+</html>
+
+
+
 
         `,
         "js": "./login.js"
