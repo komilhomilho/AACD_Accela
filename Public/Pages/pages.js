@@ -6,6 +6,7 @@ export const mapsPages = {
             <input type="password" id="password" placeholder="Digite sua senha">
             <button id="login">Login</button>
         `,
+        "html_version_dark":``,
         "js": "./login.js"
     },
     "home": {
