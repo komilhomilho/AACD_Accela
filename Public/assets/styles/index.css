@@ -1,15 +1,27 @@
+
+/* FAQ - Botões vermelhos */
 .cor_vermelha {
     background-color: #72101D;
 }
+
 .accordion-button {
     color: white;
 }
+
 .accordion-button.cor_vermelha,
 .accordion-button.cor_vermelha:not(.collapsed) {
     background-color: #72101D !important;
     color: white !important;
     box-shadow: none;
 }
+
+/* FAQ - Fundo das respostas cinza */
+.accordion-body {
+    background-color: #d3d3d3;
+    color: #333333;
+}
+
+/* Caixa de redirecionamento */
 .redirect-box {
     max-width: 700px;
     margin: 60px auto;
@@ -30,6 +42,7 @@
     margin-bottom: 20px;
 }
 
+/* Ícone de carregamento */
 .loading-icon {
     display: block;
     width: 85px;
@@ -40,6 +53,7 @@
     animation: loading-spin 1.2s linear infinite;
 }
 
+/* Aviso de redirecionamento */
 .redirect-warning {
     color: #b1b1b1;
     font-size: 0.95rem;
@@ -47,6 +61,7 @@
     margin: 0;
 }
 
+/* Animação de carregamento */
 @keyframes loading-spin {
     from {
         transform: rotate(0deg);
