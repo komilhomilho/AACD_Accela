@@ -1,0 +1,1 @@
+export const homeHtml = `<h1>...</h1>`

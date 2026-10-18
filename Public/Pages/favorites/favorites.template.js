@@ -1,0 +1,1 @@
+export const favoritesHtml = `<h1>...</h1>`

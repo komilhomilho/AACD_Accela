@@ -1,5 +1,5 @@
 // ercy
-import { switchPage } from './app.js';
+import { switchPage } from '../app.js';
 
 const campoEmail = document.getElementById('email');
 const campoSenha = document.getElementById('password');
