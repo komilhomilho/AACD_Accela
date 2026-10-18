@@ -1,40 +1,24 @@
 syntax = "proto3";
 
-package api;
+package linkSync;
 
-service UsuarioService {
-  rpc BuscarUsuario (UsuarioRequest) returns (UsuarioResponse);
-}
+service linksServices {
+  rpc chkUpdates (SyncRequest) returns (SyncRequestResponse){}
+  rpc fetchUpdates (SyncRequest) returns (stream linkItems){}
+};
 
-message UsuarioRequest {
-  int32 id = 1;
-}
+message SyncRequest {
+  int64 last_sync = 1
+};
 
-message UsuarioResponse {
-  int32 id = 1;
-  string nome = 2;
-  string email = 3;
-}
+message SyncRequestResponse {
+  bool is_update = 1
+  int64 server_lastes_update = 2
+};
 
-service ServicoDeServicos {
-  rpc BuscarServico (BuscaServicoRequest) returns (ServicoResponse);
-  rpc ListarComprasDoUsuario (ComprasRequest) returns (ComprasResponse);
-}
-
-message BuscaServicoRequest {
-  string pesquisa = 1; 
-}
-
-message ServicoResponse {
-  string id = 1;
-  string nomeDoServico = 2;
-  string descricao = 3;
-}
-
-message ComprasRequest {
-  int32 usuarioId = 1;
-}
-
-message ComprasResponse {
-  repeated string listaDeCompras = 1; 
-}
+message linkItems {
+  string name = 1
+  string desc = 2
+  string url = 3
+  repeat string tags = 4
+};

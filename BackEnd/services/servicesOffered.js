@@ -1,6 +1,0 @@
- import findService from './findServiceDB.js'
-
-
-export default {
-    findService
-} 
