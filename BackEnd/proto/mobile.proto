@@ -2,23 +2,24 @@ syntax = "proto3";
 
 package linkSync;
 
-service linksServices {
+service LinksService {
   rpc chkUpdates (SyncRequest) returns (SyncRequestResponse){}
-  rpc fetchUpdates (SyncRequest) returns (stream linkItems){}
-};
+  rpc fetchUpdates (SyncRequest) returns (stream LinkItems){}
+}
 
 message SyncRequest {
-  int64 last_sync = 1
-};
+  int64 last_sync = 1;
+}
 
 message SyncRequestResponse {
-  bool is_update = 1
-  int64 server_lastes_update = 2
-};
+  bool is_update = 1;
+  int64 server_latest_update = 2;
+}
 
-message linkItems {
-  string name = 1
-  string desc = 2
-  string url = 3
-  repeat string tags = 4
-};
+message LinkItems {
+  string name = 1;
+  string desc = 2;
+  string url = 3;
+  repeated string tags = 4;
+  repeated int64 update_dates = 5;
+}

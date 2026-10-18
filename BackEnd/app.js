@@ -1,6 +1,5 @@
 import 'dotenv/config'
 import express from 'express'
-import rotes from './Routes/Routers.js'
 import path from 'path'
 import { fileURLToPath } from 'url'
 import grpc from '@grpc/grpc-js';
@@ -16,7 +15,6 @@ const servicesMobileOffered = "./controller/allControllerMobile.js"
 connectionDB();
 
 app.use(express.json())
-app.use('', rotes)
 
 app.listen(portweb, () =>{
     log(`[REST] http://localhost:${portweb}`)
@@ -25,12 +23,12 @@ app.listen(portweb, () =>{
 const portgrpc = process.env.PORT_GRPC
 const packDefinitionUser = protoLoader.loadSync(path.join(__dirname, 'proto', 'mobile.proto'))
 const mobileProto = grpc.loadPackageDefinition(packDefinitionUser).linkSync
-
+console.log(mobileProto)
 const grpcServer = new grpc.Server()
 
-grpcServer.addService(mobileProto.linksServices.service, {
+grpcServer.addService(mobileProto.LinksService.service, {
     fetchUpdates: servicesMobileOffered.syncService,
-    chkUpdates: servicesMobileOffered
+    chkUpdates: servicesMobileOffered.chkUpdates
 })
 
 grpcServer.bindAsync(`0.0.0.0:${portgrpc}`, grpc.ServerCredentials.createInsecure(), () => {

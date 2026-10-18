@@ -3,7 +3,7 @@ import 'dotenv/config'
 
 const log = console.log
 
-export async function conectDB(){
+export default async function conectDB(){
     try{
 	await mongoose.connect(process.env.MONGO_URL)
 	log('Conectado ao MongoDB')
