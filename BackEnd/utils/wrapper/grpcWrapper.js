@@ -37,7 +37,7 @@ export function wrapStreamController(handlerFn) {
         } catch (err) {
             if (err instanceof ArgumentError) {
                 console.error(`[validation] request blocked: ${err.details}`);
-                call.emit('error', {
+                call.emit('error', { 
                     code: err.code,
                     details: err.details
                 });
