@@ -6,7 +6,7 @@ import grpc from '@grpc/grpc-js';
 import protoLoader from '@grpc/proto-loader';
 import connectionDB from './DB/connection/connectionDB.js'
 import servicesMobileOffered from './controllers/allControllerMobile.js';
-import * as allControllerRest from './controllers/allControllerRest.js'
+import allJobs from './jobs/allJobs.js';
 
 const log = console.log
 const app = express()
@@ -19,16 +19,7 @@ app.use(express.json())
 
 app.listen(portweb, () => {
     log(`[REST] http://localhost:${portweb}`)
-    const payload = {
-        url: 'https://servicos.sp.gov.br',
-        filter: 'fcarta'
-    }
-    allControllerRest.default.findLinks(payload).then(resultado => {
-    if (resultado) {
-        console.log("\n", resultado.message);
-        console.log(resultado.data);
-    }
-});
+    //allJobs.startSearchLinks()
 })
 
 const portgrpc = process.env.PORT_GRPC
