@@ -1,4 +1,5 @@
-import {db} from '../../config/connectionDB.js'
+import {db} from '../../DB/connection/connectionDB.js'
+
 export default async function syncService(request){
     
 }

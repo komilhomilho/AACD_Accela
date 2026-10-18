@@ -5,6 +5,7 @@ import path from 'path'
 import { fileURLToPath } from 'url'
 import grpc from '@grpc/grpc-js';
 import protoLoader from '@grpc/proto-loader';
+import connectionDB from './DB/connection/connectionDB.js'
 
 const log = console.log
 const app = express()
@@ -12,7 +13,7 @@ const portweb = process.env.PORT_WEB
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 const servicesMobileOffered = "./controller/allControllerMobile.js"
-
+connectionDB();
 
 app.use(express.json())
 app.use('', rotes)
