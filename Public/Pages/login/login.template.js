@@ -1,6 +1,6 @@
 export const loginHtml = `
 <head>
-<link rel="stylesheet" href="./">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
