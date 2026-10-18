@@ -21,11 +21,33 @@ export function wrapController(handlerFn) {
                     details: err.details
                 });
             }
-            console.error("database or internal error:", err)
+            console.error("database or internal error:", err);
             return callback({
                 code: status.INTERNAL,
                 details: 'An internal error occurred while processing the request'
-            })
+            });
+        }
+    }
+}
+
+export function wrapStreamController(handlerFn) {
+    return async (call) => {
+        try {
+            await handlerFn(call.request, call); 
+        } catch (err) {
+            if (err instanceof ArgumentError) {
+                console.error(`[validation] request blocked: ${err.details}`);
+                call.emit('error', {
+                    code: err.code,
+                    details: err.details
+                });
+                return;
+            }
+            console.error("database or internal error:", err);
+            call.emit('error', {
+                code: status.INTERNAL,
+                details: 'An internal error occurred while processing the request'
+            });
         }
     }
 }

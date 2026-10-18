@@ -1,0 +1,1 @@
+export const specifyCategoryGovDocHtml =`<h1>...</h1>`

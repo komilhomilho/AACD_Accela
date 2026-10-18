@@ -1,0 +1,131 @@
+
+/* Página da categoria */
+.specify-category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    min-height: 100dvh;
+    padding: 20px 15px;
+    box-sizing: border-box;
+}
+
+/* Container principal */
+.specify-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    max-width: 500px;
+    min-height: 90px;
+    padding: 20px 25px;
+
+    background-color: #72101D;
+    color: white;
+    border-radius: 12px;
+
+    font-size: 20px;
+    font-weight: bold;
+    box-sizing: border-box;
+}
+
+/* Texto centralizado */
+.specify-header span {
+    flex: 1;
+    text-align: center;
+}
+
+/* Ícone da categoria */
+.specify-icon {
+    flex: 0 0 40px;
+    font-size: 40px;
+    font-weight: normal;
+    text-align: center;
+    line-height: 1;
+    color: white;
+}
+
+/* Barra de pesquisa */
+.specify-search {
+    width: 100%;
+    max-width: 500px;
+    margin: 35px auto 0;
+}
+
+.specify-search .input-group-text {
+    background-color: #d3d3d3;
+    border: none;
+    border-radius: 10px 0 0 10px;
+    font-size: 22px;
+}
+
+.specify-search .form-control {
+    background-color: #f5f5f5;
+    border: 5px solid #d3d3d3;
+    border-left: none;
+    border-radius: 0 10px 10px 0;
+}
+
+/* Área dos serviços */
+.specify-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    width: 100%;
+    max-width: 500px;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+/* Botões dos serviços */
+.specify-card {
+    width: 90%;
+    min-height: 45px;
+    padding: 10px 15px;
+
+    background-color: #72101D;
+    color: white;
+    border: none;
+    border-radius: 12px;
+
+    font-size: 16px;
+    text-align: left;
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+/* Efeito ao passar o mouse */
+.specify-card:hover {
+    background-color: #590c16;
+}
+
+/* Ajustes para celulares */
+@media (max-width: 480px) {
+    .specify-category {
+        padding: 20px 15px;
+    }
+
+    .specify-header {
+        min-height: 85px;
+        padding: 18px 20px;
+        font-size: 18px;
+    }
+
+    .specify-icon {
+        font-size: 36px;
+    }
+
+    .specify-search {
+        margin-top: 30px;
+    }
+
+    .specify-card {
+        min-height: 40px;
+        padding: 8px 12px;
+        font-size: 16px;
+    }
+}

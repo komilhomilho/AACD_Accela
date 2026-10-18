@@ -1,0 +1,19 @@
+.savedItem { 
+  background-color: #72101D; 
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  color: #FFFFFF; 
+} 
+
+.savedItem:hover { 
+  background-color: rgba(255, 255, 255, 0.18); 
+} 
+
+.savedItem .icon-coracao::before { 
+  content: "\F415"; 
+} 
+
+.resultSearch { 
+  background-color: #72101D; 
+  border: 1px solid rgba(255, 255, 255, 0.15); 
+  color: #FFFFFF; 
+}

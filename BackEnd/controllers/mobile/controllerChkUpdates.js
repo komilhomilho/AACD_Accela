@@ -1,11 +1,21 @@
-import {chkUpdate} from "../../services/servicesMobileOffered"
-import { ArgumentError } from "../../utils/wrapper/grpcWrapper.js";
+import servicesMobileOffered from "../../services/servicesMobileOffered.js";
+const { chkUpdate } = servicesMobileOffered;
 
 export default async function controllerChkUpdates(request) {
-    const { query } = request;
-    if (!query || query.trim() === '') {
-        throw new ArgumentError('the query cannot be empty');
+    const { last_sync } = request;
+
+    if (last_sync == null) {
+        throw new ArgumentError('last_sync cannot be empty');
     }
-    const dbResponse = await chkUpdate(query);
-    return dbResponse;
+
+    const dbResponse = await chkUpdate(last_sync);
+
+    const hasUpdates = dbResponse.length > 0;
+
+    const latestDate = hasUpdates ? Date.now() : last_sync; 
+
+    return {
+        is_update: hasUpdates,
+        server_latest_update: latestDate
+    };
 }

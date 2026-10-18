@@ -1,0 +1,31 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    max-width: 400px;
+    box-sizing: border-box;
+}
+
+
+.form-container input,
+.form-container button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+
+.form-container button {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+input::placeholder {
+    color: white;
+    opacity: 0.8;
+}
