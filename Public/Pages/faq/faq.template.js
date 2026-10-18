@@ -2,7 +2,7 @@ export const faqHtml = `
 <div class="accordion" id="accordionExample">
 
  <h1 style="text-align: center; margin-bottom: 30px;">
-  <strong>FAQ</strong>
+  FAQ
  </h1>
 
  <div class="accordion-item">

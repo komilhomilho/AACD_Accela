@@ -5,6 +5,10 @@ export const loginHtml = `
 <body>
 
   <h1>Faça seu Login</h1>
+  <p></p>
+  <p></p>
+  <p></p>
+
   <div class="form-container">
     <input type="email" id="email" placeholder="Digite seu email" style="background-color: #72101D; color: white;">
     <input type="password" id="password" placeholder="Digite sua senha" style="background-color: #72101D; color: white;">
