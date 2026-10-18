@@ -24,4 +24,4 @@ export async function switchPage(idDaPagina) {
     }
 }
 
-switchPage('faq');
+switchPage('redirect');

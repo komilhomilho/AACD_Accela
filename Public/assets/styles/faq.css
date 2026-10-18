@@ -6,6 +6,7 @@
 
 .accordion-button {
     color: white;
+    border-radius: 15px !important;
 }
 
 .accordion-button.cor_vermelha,
@@ -19,58 +20,9 @@
 .accordion-body {
     background-color: #d3d3d3;
     color: #333333;
+    border-radius: 0 0 15px 15px;
 }
 
-/* Caixa de redirecionamento */
-.redirect-box {
-    max-width: 700px;
-    margin: 60px auto;
-    padding: 50px 35px;
-
-    background-color: #72101D;
-    border: 2px solid #ffffff;
-    border-radius: 16px;
-
-    text-align: center;
-    box-shadow: 0 6px 24px rgba(114, 16, 29, 0.12);
-}
-
-.redirect-box h2 {
-    color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-}
-
-/* Ícone de carregamento */
-.loading-icon {
-    display: block;
-    width: 85px;
-    height: 85px;
-    margin: 0 auto 30px;
-
-    object-fit: contain;
-    animation: loading-spin 1.2s linear infinite;
-}
-
-/* Aviso de redirecionamento */
-.redirect-warning {
-    color: #b1b1b1;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Animação de carregamento */
-@keyframes loading-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
-}
 /* Espaçamento entre as caixas do FAQ */
 .accordion-item {
     margin-bottom: 15px;
@@ -79,21 +31,9 @@
     border: 1px solid #72101D;
 }
 
-/* Arredondamento dos botões */
-.accordion-button {
-    border-radius: 15px !important;
-}
-
 /* Quando expandido, arredonda apenas a parte superior */
 .accordion-button:not(.collapsed) {
     border-radius: 15px 15px 0 0 !important;
-}
-
-/* Arredondamento inferior da resposta */
-.accordion-body {
-    background-color: #d3d3d3;
-    color: #333333;
-    border-radius: 0 0 15px 15px;
 }
 
 /* Remove as bordas automáticas entre itens do Bootstrap */
@@ -101,14 +41,18 @@
     border-top: 1px solid #72101D;
     margin-top: 15px;
 }
+
+/* Título FAQ */
 .accordion h1 {
     font-size: 3.5rem;
     font-weight: bold;
 }
+
 /* Setas brancas */
 .accordion-button::after {
     filter: brightness(0) invert(1) !important;
 }
+
 /* Manter as setas brancas ao expandir */
 .accordion-button:not(.collapsed)::after {
     filter: brightness(0) invert(1) !important;

@@ -1,0 +1,52 @@
+
+/* Caixa de redirecionamento */
+.redirect-box {
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 50px 35px;
+
+    background-color: #72101D;
+    border: 2px solid #ffffff;
+    border-radius: 16px;
+
+    text-align: center;
+    box-shadow: 0 6px 24px rgba(114, 16, 29, 0.12);
+}
+
+/* Título de redirecionamento */
+.redirect-box h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Ícone de carregamento */
+.loading-icon {
+    display: block;
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 30px;
+
+    object-fit: contain;
+    animation: loading-spin 1.2s linear infinite;
+}
+
+/* Aviso de redirecionamento */
+.redirect-warning {
+    color: #b1b1b1;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Animação de carregamento */
+@keyframes loading-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
