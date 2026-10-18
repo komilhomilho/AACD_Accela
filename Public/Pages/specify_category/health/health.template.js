@@ -1,0 +1,1 @@
+export const specifyCategoryHealthHtml =`<h1>...</h1>`

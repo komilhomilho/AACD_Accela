@@ -1,5 +1,5 @@
 
-export const specifyCategoryHtml = `
+export const specifyCategoryTransitHtml = `
 <div class="specify-category">
 
   <!-- Categoria no topo -->

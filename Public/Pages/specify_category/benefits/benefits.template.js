@@ -1,0 +1,1 @@
+export const specifyCategoryBenefitsHtml =`<h1>...</h1>`
