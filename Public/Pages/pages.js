@@ -4,7 +4,7 @@ import { globalSearchHtml } from './global_search/global_search.template.js';
 import { homeHtml } from './home/home.template.js';
 import { loginHtml } from './login/login.template.js';
 import { redirectHtml } from './redirect/redirect.template.js';
-import { specifyCategoryHtml } from './specify_category/specify_category.template.js';
+import { specifyCategoryHtml } from './specify_category/transit/transit.template.js';
 import { signUpHtml } from './sign_up/sign_up.template.js';
 
 export const mapsPages = {
