@@ -7,6 +7,8 @@ import protoLoader from '@grpc/proto-loader';
 import connectionDB from './DB/connection/connectionDB.js'
 import servicesMobileOffered from './controllers/allControllerMobile.js';
 import allJobs from './jobs/allJobs.js';
+import allTools from './utils/tools/allTools.js';
+import fs from 'fs'
 
 const log = console.log
 const app = express()
@@ -19,7 +21,10 @@ app.use(express.json())
 
 app.listen(portweb, () => {
     log(`[REST] http://localhost:${portweb}`)
-    //allJobs.startSearchLinks()
+    allJobs.linksGov(__dirname, 'DB/jsons', 'data.json')
+    allJobs.linksSP(__dirname, 'DB/jsons', 'data.json')
+    //allJobs.startSearchLinksSp()
+    //allJobs.startSearchLinksGov()
 })
 
 const portgrpc = process.env.PORT_GRPC

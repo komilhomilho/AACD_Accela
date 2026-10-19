@@ -1,6 +1,6 @@
-import findServiceRest from './rest/findLinksSP.js'
-
+import findLinksSP from './rest/findLinksSP.js'
+import findLinksGov from './rest/findLinkGov.js'
 export default {
-    findLinksSP: findServiceRest,
-
+    findLinksSP,
+    findLinksGov
 }

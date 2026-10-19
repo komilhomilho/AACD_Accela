@@ -7,18 +7,17 @@ export default async function findServiceController (payload){
     if (!payload || typeof payload.url !== 'string'){
         throw new ArgumentError('The url field is mandatory and must be of type string.')
     }
-    console.log(typeof payload.filter)
     if (typeof payload.filter !== 'object'){
-        throw new ArgumentError('The filter field is mandatory and must be of type string.')
+        throw new ArgumentError('The filter field is mandatory and must be of type object.')
     }
     const url = payload.url
+    if(!url.includes('searchHere') || !url.includes('pageHere')){
+            throw new ArgumentError('The URL does not contain the search location (searchHere) or the page locations (pageHere).')
+        }
     const filter = payload.filter
-    if(!url.includes('searchHere')){
-        throw new ArgumentError('The URL must contain the searchHere.')
-    }
-    const results = await findLinksSP(url, filter)
+    const links = await findLinksSP(url, filter)
     return ({
         message: 'Links Found:',
-        data: results
+        data: links
     })
 }

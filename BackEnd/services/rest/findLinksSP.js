@@ -2,71 +2,70 @@ import axios from "axios";
 import * as cheerio from "cheerio";
 
 const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
-const log = console.log
+const log = console.log;
 
-export default async function findServiceRest(url, filter) {
+export default async function findLinksSP(url, filter) {
     try {
-        let links = []
+        let links = [];
         for (const tag of filter) {
-            let urlFormated = url.replace(/searchHere/, tag);
+            const baseUrlByTag = url.replace(/searchHere/, tag);
 
-            for (let i = 1; ; i++) {
+            for (let page = 1; ; page++) {
                 await sleep(2000);
-                urlFormated = urlFormated.replace(/page=.*/, `page=${i}`);
+                const urlFormatted = baseUrlByTag.replace(/pageHere/, page);
 
-                log(`For List: ${urlFormated}`);
-                const { data } = await axios.get(urlFormated);
+                log(`Fetching list: ${urlFormatted}`);
+                const { data } = await axios.get(urlFormatted);
                 const $main = cheerio.load(data);
 
-                const linkForPage = $main('a');
-                if (linkForPage.length === 0) {
-                    log(`Not Find Link ${i}. Final Tag tag: ${tag}`);
+                const linkForPages = $main('a');
+                
+                if (linkForPages.length === 0) {
+                    log(`No links found on page ${page}. End of search for tag: ${tag}`);
                     break;
                 }
 
                 const containsTag = new RegExp(tag, 'i');
-
-                const elementosLink = linkForPage.toArray();
-
-                for (const element of elementosLink) {
+                const elementsLink = linkForPages.toArray();
+                let foundMatchesOnPage = false;
+                for (const element of elementsLink) {
                     const link = $main(element).attr('href');
                     const titleLink = $main(element).text().trim();
-
                     if (link && containsTag.test(titleLink)) {
-
-                        const linkCompleto = link.startsWith('http') ? link : new URL(link, urlFormated).href;
-
-                        log(`Open Service: ${titleLink} | Link: ${linkCompleto}`);
+                        const fullLink = link.startsWith('http') ? link : new URL(link, urlFormatted).href;
+                        foundMatchesOnPage = true;
+                        log(`Opening service: ${titleLink} | Link: ${fullLink}`);
 
                         await sleep(1500);
 
                         try {
-                            const { data: pageData } = await axios.get(linkCompleto);
-
+                            const { data: pageData } = await axios.get(fullLink);
                             const $details = cheerio.load(pageData);
-
                             const description = $details('.descricao-servico').text().trim();
 
                             links.push({
                                 tag: tag,
-                                link: linkCompleto,
+                                link: fullLink,
                                 title: titleLink,
-                                desc: description || "Description not Find."
+                                description: description || "No description found."
                             });
                         } catch (err) {
-                            log(`Erro catch description service: ${titleLink}: ${err.message}`);
+                            log(`Error extracting description for ${titleLink}: ${err.message}`);
                         }
                     }
                 }
-                const titleLink = linkForPage.text().trim();
-                if(!containsTag.test(titleLink)){
-                    break
+                if (!foundMatchesOnPage) {
+                    log(`No matching links found on page ${page}. End of search for tag: ${tag}`);
+                    break;
                 }
+                log(`Finished page: ${page}`);
             }
         }
-        log(links.tag)
-    } catch (error) {
-        console.error(`Erro ao acessar ${url}:`, error.message);
+        
+        return links;
+        
+    } catch (err) {
+        console.error(`Error accessing ${url}:`, err.message);
         return [];
     }
 }
