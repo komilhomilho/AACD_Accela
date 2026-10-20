@@ -1,31 +1,38 @@
-.form-container {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    width: 100%;
-    max-width: 400px;
-    box-sizing: border-box;
+/* Centraliza o título e o texto padrão */
+h1 {
+  text-align: center;
 }
 
+/* Centraliza o formulário na tela e dá espaço igual entre os elementos */
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Garante que os itens fiquem centralizados */
+  gap: 15px;           /* Espaçamento uniforme entre um elemento e outro */
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;      /* Centraliza a caixa do formulário na página */
+  box-sizing: border-box;
+}
 
+/* Estilo unificado para inputs e botões (responsivo em todos os dispositivos) */
 .form-container input,
 .form-container button {
-    width: 100%;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    box-sizing: border-box;
-    font-size: 16px;
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  box-sizing: border-box;
+  font-size: 16px; /* Evita zoom automático em celulares */
 }
-
 
 .form-container button {
-    cursor: pointer;
-    font-weight: bold;
+  cursor: pointer;
+  font-weight: bold;
 }
 
-
+/* Deixa o texto do placeholder branquinho */
 input::placeholder {
-    color: white;
-    opacity: 0.8;
+  color: white;
+  opacity: 0.8;
 }
