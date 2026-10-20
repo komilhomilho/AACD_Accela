@@ -93,3 +93,7 @@
 }
 
         }
+.nav-pills .nav-link.active {
+    background-color: #852A36;
+    color: white;
+}
