@@ -1,5 +1,6 @@
 export const favoritesHtml = ` 
 <!-- Barra de pesquisa -->
+<p></p>
   <div class="input-group home-search">
     <span class="input-group-text">
       <i class="bi bi-search"></i>
