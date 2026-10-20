@@ -99,4 +99,4 @@ const botoes = document.querySelectorAll(
             }
         });
 
-switchPage('login');
+switchPage('home');
