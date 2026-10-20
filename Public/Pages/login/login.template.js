@@ -1,22 +1,14 @@
 export const loginHtml = `
 <head>
-<link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
   <h1>Faça seu Login</h1>
-  <p></p>
-  <p></p>
-  <p></p>
 
   <div class="form-container">
-    <input type="email" id="email" placeholder="Digite seu email" style="background-color: #72101D; color: white;">
-    <input type="password" id="password" placeholder="Digite sua senha" style="background-color: #72101D; color: white;">
-   
-    <button id="login" style="background-color: #72101D; color: white;">Login</button>
-    <button id="register" style="background-color: #72101D; color: white;">Criar Conta</button>
-    <button></button>
-    <button></button>
+    <button id="google-login">Entrar com o Google</button>
+    <button id="facebook-login">Entrar com o Facebook</button>
   </div>
 
 </body>
