@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accela</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- CSS das páginas -->
+    <link rel="stylesheet" href="/src/assets/css/faq.css">
+    <link rel="stylesheet" href="/src/assets/css/login.css">
+    <link rel="stylesheet" href="/src/assets/css/redirect.css">
+    <link rel="stylesheet" href="/src/assets/css/favorites.css">
+    <link rel="stylesheet" href="/src/assets/css/global_search.css">
+    <link rel="stylesheet" href="/src/assets/css/home.css">
+    <link rel="stylesheet" href="/src/assets/css/sign_up.css">
+    <link rel="stylesheet" href="/src/assets/css/specify_category.css">
+    <link rel="stylesheet" href="/src/assets/css/global.css">
+    
+    <script type="module" src="/src/components/app.js"></script>
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+
+    <main id="app" class="container-fluid"></main>
+
+    <nav aria-label="Navegação principal">
+        <ul class="nav nav-pills bottom-nav">
+
+            <li class="nav-item">
+                <button
+                    class="nav-link active"
+                    type="button"
+                    data-page="home"
+                    aria-label="Início"
+                    aria-current="page">
+                    <i class="bi bi-house-fill"></i>
+                </button>
+            </li>
+
+            <!-- FAVORITOS -->
+            <li class="nav-item">
+                <button
+                    class="nav-link"
+                    type="button"
+                    data-page="favorites"
+                    aria-label="Favoritos">
+                    <i class="bi bi-star"></i>
+                </button>
+            </li>
+
+            <!-- FAQ -->
+            <li class="nav-item">
+                <button
+                    class="nav-link"
+                    type="button"
+                    data-page="faq"
+                    aria-label="Ajuda">
+                    <i class="bi bi-headset"></i>
+                </button>
+            </li>
+
+            <!-- PERFIL -->
+            <li class="nav-item">
+                <button
+                    class="nav-link"
+                    type="button"
+                    data-page="login"
+                    aria-label="Perfil">
+                    <i class="bi bi-person"></i>
+                </button>
+            </li>
+
+        </ul>
+    </nav>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

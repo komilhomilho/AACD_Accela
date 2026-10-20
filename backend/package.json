@@ -1,0 +1,31 @@
+{
+  "name": "aacd_accela",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./src/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/komilhomilho/AACD_Accela.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/komilhomilho/AACD_Accela/issues"
+  },
+  "homepage": "https://github.com/komilhomilho/AACD_Accela#readme",
+  "dependencies": {
+    "axios": "^1.20.0",
+    "cheerio": "^1.2.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "express-slow-down": "^3.1.1",
+    "mongoose": "^9.11.1",
+    "nodemon": "^3.1.14"
+  }
+}

@@ -1,0 +1,75 @@
+import storageService from '../../services/storage.service.js';
+import { switchPage } from '../app.js';
+
+export function iniciar() {
+    const searchInput = document.getElementById('searchBarGlobal');
+    const searchResultsContainer = document.getElementById('searchResults');
+
+    const databaseItems = storageService.getLocalData();
+
+    if (searchInput) {
+        searchInput.focus();
+    }
+
+    function renderResults(itemsToRender) {
+        if (!searchResultsContainer) return;
+        
+        searchResultsContainer.innerHTML = '';
+
+        if (!itemsToRender || itemsToRender.length === 0) {
+            searchResultsContainer.innerHTML = '<p class="text-muted p-2">Nenhum resultado encontrado.</p>';
+            return;
+        }
+
+        const sortedItems = [...itemsToRender].sort((a, b) => {
+            const titleA = a.titulo || a.title || a.nome || a.name || '';
+            const titleB = b.titulo || b.title || b.nome || b.name || '';
+            return titleA.localeCompare(titleB);
+        });
+
+        sortedItems.forEach(item => {
+            const cardElement = document.createElement('div');
+            cardElement.classList.add('custom-card', 'shadow-sm', 'p-3', 'mb-2', 'bg-body-tertiary', 'rounded');
+            cardElement.style.cursor = 'pointer';
+            
+            const displayTitle = item.titulo || item.title || item.nome || item.name || 'Link sem título';
+            const displayUrl = item.URL || item.link || '#';
+
+            cardElement.innerHTML = `
+                <h5 class="mb-1">${displayTitle}</h5>
+                <p class="mb-0 small text-primary text-truncate">${displayUrl}</p>
+            `;
+
+            // Clique no card salva a URL no sessionStorage e muda de página
+            cardElement.addEventListener('click', () => {
+                if (displayUrl && displayUrl !== '#') {
+                    sessionStorage.setItem('redirectTarget', displayUrl);
+                    switchPage('redirect');
+                }
+            });
+
+            searchResultsContainer.appendChild(cardElement);
+        });
+    }
+
+    renderResults(databaseItems);
+
+    if (searchInput) {
+        searchInput.addEventListener('input', (event) => {
+            const searchTerm = event.target.value.toLowerCase().trim();
+
+            if (searchTerm === '') {
+                renderResults(databaseItems);
+                return;
+            }
+
+            const filteredResults = databaseItems.filter(item => {
+                const title = (item.titulo || item.title || item.nome || item.name || '').toLowerCase();
+                const url = (item.url || item.link || '').toLowerCase();
+                return title.includes(searchTerm) || url.includes(searchTerm);
+            });
+
+            renderResults(filteredResults);
+        });
+    }
+}
