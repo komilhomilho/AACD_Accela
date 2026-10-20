@@ -3,9 +3,11 @@
 .home {
     display: flex;
     flex-direction: column;
+
     width: 100%;
     min-height: 100dvh;
-    padding: 20px 10px;
+
+    padding: 15px 14px 115px;
     box-sizing: border-box;
 }
 
@@ -14,6 +16,7 @@
     width: 100%;
     max-width: 500px;
     margin: 0 auto;
+    flex-shrink: 0;
 }
 
 .home-search .input-group-text {
@@ -29,19 +32,21 @@
     border-radius: 0 10px 10px 0;
 }
 
-/* Área dos containers */
+/* Área dos quatro cards */
 .home-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 
     flex: 1;
     width: 100%;
-    gap: 15px;
+
+    gap: clamp(12px, 2dvh, 25px);
+    margin-top: 30px;
 }
 
-/* Containers vermelhos */
+/* Cards responsivos */
 .home-card {
     display: flex;
     align-items: center;
@@ -49,17 +54,25 @@
 
     width: 100%;
     max-width: 500px;
-    min-height: 90px;
-    padding: 20px 25px;
+
+    /* Cresce conforme a altura da tela */
+    min-height: clamp(70px, 11dvh, 115px);
+    flex-shrink: 0;
+
+    /* Espaçamento interno responsivo */
+    padding: clamp(12px, 3vw, 25px);
 
     background-color: #72101D;
     color: white;
+    border: none;
     border-radius: 12px;
 
-    font-size: 18px;
+    /* Fonte responsiva */
+    font-size: clamp(14px, 4vw, 20px);
     font-weight: bold;
-    cursor: pointer;
+    font-family: inherit;
 
+    cursor: pointer;
     box-sizing: border-box;
     transition: background-color 0.2s ease;
 }
@@ -70,38 +83,40 @@
     text-align: center;
 }
 
-/* Ícones Bootstrap à direita */
+/* Ícones responsivos */
 .home-card .home-icon {
-    flex: 0 0 40px;
-    font-size: 30px;
+    flex: 0 0 clamp(35px, 10vw, 50px);
+
+    font-size: clamp(26px, 8vw, 40px);
     font-weight: normal;
     text-align: center;
     line-height: 1;
     color: white;
 }
 
-/* Efeito ao passar o mouse */
+/* Efeito hover */
 .home-card:hover {
     background-color: #590c16;
 }
 
-/* Ajustes para telas pequenas */
+/* Telas pequenas */
 @media (max-width: 480px) {
     .home {
-        padding: 15px;
+        padding: 15px 14px 115px;
     }
 
-    .home-card {
-        min-height: 85px;
-        padding: 18px 20px;
-        font-size: 16px;
-    }
-
-    .home-card .home-icon {
-        font-size: 30px;
+    .home-container {
+        margin-top: 25px;
     }
 }
-.home-card {
-    border: none;
-    font-family: inherit;
+
+/* Telas com pouca altura */
+@media (max-height: 560px) {
+    .home {
+        min-height: 560px;
+    }
+
+    .home-container {
+        gap: 12px;
+    }
 }
