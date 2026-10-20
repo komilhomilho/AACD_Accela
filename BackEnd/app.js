@@ -24,8 +24,8 @@ app.get('/', (req, res) => {
 
 app.listen(portweb, () => {
     log(`[LINKS] http://localhost:${portweb}`)
-    //allJobs.linksGov(__dirname, 'DB/jsons', 'data.json')
-    //allJobs.linksSP(__dirname, 'DB/jsons', 'data.json')
+    allJobs.linksGov(__dirname, 'DB/jsons', 'data.json')
+    allJobs.linksSP(__dirname, 'DB/jsons', 'data.json')
 })
 
 const portgrpc = process.env.PORT_GRPC

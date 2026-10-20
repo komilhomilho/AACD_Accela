@@ -1,4 +1,5 @@
 import { mapsPages } from './pages.js';
+import api from "./apis/allApis.js"
 
 const app = document.getElementById('app');
 
@@ -23,5 +24,7 @@ export async function switchPage(idDaPagina) {
         }
     }
 }
+
+
 
 switchPage('home');
