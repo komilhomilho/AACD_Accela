@@ -12,7 +12,7 @@ export default async function addArquiveJSON(__dirname, path, fs, __filePath, na
             const conteudoArquivo = await fs.readFile(filePath, 'utf8'); 
             list = JSON.parse(conteudoArquivo);
         } catch (err) {
-            console.log('[tools] Arquivo não encontrado, criando um novo...');
+            console.log('[tools] File not found, creating a new one...');
         }
         
         if (Array.isArray(data)) {
@@ -22,9 +22,9 @@ export default async function addArquiveJSON(__dirname, path, fs, __filePath, na
         }
         
         await fs.writeFile(filePath, JSON.stringify(list, null, 2)); 
-        console.log('[tools] Item adicionado com sucesso!');
+        console.log('[tools] Item successfully added!');
         
     } catch (err) {
-        console.error('[tools] erro ao processar o arquivo JSON:', err);
+        console.error('[tools] error processing JSON file:', err);
     }
 }

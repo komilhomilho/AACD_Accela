@@ -1,4 +1,4 @@
-import { findLinksSP } from '../controllers/allControllerRest.js';
+import { findLinksSP } from '../controllers/allControllerServices.js';
 
 export default async function startSearchLinksSp() {
     console.log("[Job] starting auto-capture of links SP");

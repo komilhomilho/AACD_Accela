@@ -1,5 +1,5 @@
-import services from '../../services/servicesRestOffered.js'
-import { ArgumentError } from '../../utils/wrapper/restWrapper.js'
+import * as services from '../../services/servicesLinksOffered.js'
+import { ArgumentError } from '../../utils/wrapper/linksWrapper.js'
 const findLinksGov = services.findLinksGov
 
 export default async function findLinksGovController(payload) {
@@ -16,7 +16,7 @@ export default async function findLinksGovController(payload) {
     const filter = payload.filter
     const links = await findLinksGov(url, filter)
     return ({
-        message: 'Links Found:',
+        message: 'Links Found (Gov):',
         data: links
     })
 }

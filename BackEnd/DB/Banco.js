@@ -31,5 +31,5 @@ db.link.insertMany([
     }
 ].map(doc => ({
     ...doc,
-    historicoAtualizacoes: [new Date("2026-10-18T13:05:00Z")] // Injeta a data atual no primeiro índice
+    historicoAtualizacoes: [new Date()] // Injeta a data atual no primeiro índice
 })))

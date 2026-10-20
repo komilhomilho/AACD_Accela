@@ -20,11 +20,9 @@ connectionDB();
 app.use(express.json())
 
 app.listen(portweb, () => {
-    log(`[REST] http://localhost:${portweb}`)
-    allJobs.linksGov(__dirname, 'DB/jsons', 'data.json')
-    allJobs.linksSP(__dirname, 'DB/jsons', 'data.json')
-    //allJobs.startSearchLinksSp()
-    //allJobs.startSearchLinksGov()
+    log(`[LINKS] http://localhost:${portweb}`)
+    //allJobs.linksGov(__dirname, 'DB/jsons', 'data.json')
+    //allJobs.linksSP(__dirname, 'DB/jsons', 'data.json')
 })
 
 const portgrpc = process.env.PORT_GRPC

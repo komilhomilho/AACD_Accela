@@ -1,9 +1,8 @@
-import services from '../../services/servicesRestOffered.js';
-import { ArgumentError } from '../../utils/wrapper/grpcWrapper.js';
-const {findLinksSP} = services;
+import { ArgumentError } from '../../utils/wrapper/linksWrapper.js'
+import * as services from '../../services/servicesLinksOffered.js'
+const findLinksSP = services.findLinksSP;
 
-export default async function findServiceController (payload){
-
+export default async function findServiceSPController(payload){
     if (!payload || typeof payload.url !== 'string'){
         throw new ArgumentError('The url field is mandatory and must be of type string.')
     }
@@ -17,7 +16,7 @@ export default async function findServiceController (payload){
     const filter = payload.filter
     const links = await findLinksSP(url, filter)
     return ({
-        message: 'Links Found:',
+        message: 'Links Found (SP):',
         data: links
     })
 }

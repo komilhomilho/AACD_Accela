@@ -1,4 +1,4 @@
-import {findLinksGov} from '../controllers/allControllerRest.js'
+import {findLinksGov} from '../controllers/allControllerServices.js'
 export default async function startSearchGovLinks(){
     console.log("[Job] starting auto-capture of links Gov");
     
