@@ -33,3 +33,5 @@ db.link.insertMany([
     ...doc,
     historicoAtualizacoes: [new Date()] // Injeta a data atual no primeiro índice
 })))
+
+

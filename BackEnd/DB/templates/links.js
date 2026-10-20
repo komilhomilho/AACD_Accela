@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 const {Schema, model} = mongoose;
 
 const linkSchema = new Schema({
-    nome :{
+    name :{
         type: String,
         trim: true,
         required: [true, 'The link name is required.']
@@ -21,7 +21,7 @@ const linkSchema = new Schema({
         type: [String],
         default: []
     },
-    historicoAtualizacoes  :{
+    updateHistory  :{
         type: Date,
         default: Date.now
     }

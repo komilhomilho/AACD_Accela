@@ -45,10 +45,8 @@ export default async function findServiceGov(url, filter) {
 
                     if (isValid) {
                         const title = item.title;
-                        const category = item.idsCategorias;
                         const tags = item.tags;
                         const link = item.url_solicitacao_servico_digital;
-                        const uf = item.uf
                         let finalDescription = "No description.";
 
                         if (item.description) {
@@ -66,10 +64,8 @@ export default async function findServiceGov(url, filter) {
 
                         links.push({
                             title: title || "",
-                            category: category || "",
                             tags: tags || [],
                             link: link || item.contentUrl,
-                            uf: uf || "",
                             description: finalDescription,
                         });
 
