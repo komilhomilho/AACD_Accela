@@ -20,12 +20,13 @@
     <link rel="stylesheet" href="./assets/styles/sign_up.css">
     <link rel="stylesheet" href="./assets/styles/specify_category.css">
     <link rel="stylesheet" href="./assets/styles/global.css">
-
+    <script type="module" src="./Pages/app.js"></script>
+    
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
-<body onload="last_sync()">
+<body >
 
     <!-- Conteúdo principal da SPA -->
     <main id="app" class="container-fluid"></main>
@@ -84,82 +85,5 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Navegação SPA -->
-    <script type="module">
-        import { switchPage } from './Pages/app.js';
-
-        // Botões da navbar
-        const botoes = document.querySelectorAll(
-            '.bottom-nav .nav-link'
-        );
-
-        // Categorias da Home
-        const categorias = {
-            "Governo e documentos": "gov_doc",
-            "Trânsito": "transit",
-            "Saúde": "health",
-            "Benefícios e dinheiro": "benefits"
-        };
-
-        // Atualiza o botão ativo
-        function atualizarNavbar(pagina) {
-            botoes.forEach(botao => {
-                const ativo = botao.dataset.page === pagina;
-
-                botao.classList.toggle('active', ativo);
-
-                if (ativo) {
-                    botao.setAttribute('aria-current', 'page');
-                } else {
-                    botao.removeAttribute('aria-current');
-                }
-            });
-        }
-
-        // Detecta cliques na página
-        document.addEventListener('click', async (evento) => {
-
-            // Navegação pela navbar
-            const botao = evento.target.closest(
-                '.bottom-nav [data-page]'
-            );
-
-            if (botao) {
-                const pagina = botao.dataset.page;
-
-                await switchPage(pagina);
-                atualizarNavbar(pagina);
-
-                return;
-            }
-
-            // Navegação pelas categorias da Home
-            const card = evento.target.closest('.home-card');
-
-            if (card) {
-
-                // Evita navegar novamente se outro
-                // evento já substituiu a Home
-                if (!card.isConnected) return;
-
-                const nome = card.querySelector('span')
-                    ?.textContent.trim();
-
-                const pagina = categorias[nome];
-
-                if (pagina) {
-                    evento.preventDefault();
-                    evento.stopImmediatePropagation();
-
-                    await switchPage(pagina);
-
-                    // Categorias pertencem à Home
-                    atualizarNavbar('home');
-                }
-            }
-        });
-    </script>
-
 </body>
 </html>
