@@ -7,17 +7,20 @@ import protoLoader from '@grpc/proto-loader';
 import connectionDB from './DB/connection/connectionDB.js'
 import servicesMobileOffered from './controllers/allControllerMobile.js';
 import allJobs from './jobs/allJobs.js';
-import allTools from './utils/tools/allTools.js';
-import fs from 'fs'
 
 const log = console.log
 const app = express()
 const portweb = process.env.PORT_WEB
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
+const publicPath = path.join(__dirname, '../Public');
 connectionDB();
 
 app.use(express.json())
+app.use(express.static(publicPath));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(publicPath, 'index.html'));
+})
 
 app.listen(portweb, () => {
     log(`[LINKS] http://localhost:${portweb}`)
