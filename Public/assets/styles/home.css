@@ -36,15 +36,21 @@
 .home-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
+    /* Agrupa os cards no centro */
+    justify-content: center;
     align-items: center;
 
     flex: 1;
     width: 100%;
 
-    gap: clamp(12px, 2dvh, 25px);
-    margin-top: 30px;
+    /* Espaçamento real entre os cards */
+    gap: 30px;
+
+    /* Distância da barra de pesquisa */
+    margin-top: 15px;
 }
+
 
 /* Cards responsivos */
 .home-card {
@@ -56,8 +62,9 @@
     max-width: 500px;
 
     /* Cresce conforme a altura da tela */
-    min-height: clamp(70px, 11dvh, 115px);
-    flex-shrink: 0;
+    min-height: 0;
+    height: clamp(70px, 12dvh, 140px);
+    flex-shrink: 1;
 
     /* Espaçamento interno responsivo */
     padding: clamp(12px, 3vw, 25px);
@@ -68,7 +75,7 @@
     border-radius: 12px;
 
     /* Fonte responsiva */
-    font-size: clamp(14px, 4vw, 20px);
+    font-size: clamp(20px, 5.5vw, 28px);
     font-weight: bold;
     font-family: inherit;
 
@@ -99,24 +106,3 @@
     background-color: #590c16;
 }
 
-/* Telas pequenas */
-@media (max-width: 480px) {
-    .home {
-        padding: 15px 14px 115px;
-    }
-
-    .home-container {
-        margin-top: 25px;
-    }
-}
-
-/* Telas com pouca altura */
-@media (max-height: 560px) {
-    .home {
-        min-height: 560px;
-    }
-
-    .home-container {
-        gap: 12px;
-    }
-}

@@ -86,4 +86,10 @@
             .bottom-nav .nav-link i {
                 font-size: 30px;
             }
+            
+/* Remove o espaço extra somente da Home */
+#app:has(.home) {
+    padding-bottom: 0;
+}
+
         }
