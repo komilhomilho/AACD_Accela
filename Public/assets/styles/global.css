@@ -1,0 +1,89 @@
+/* Espaço para a navbar não cobrir o conteúdo */
+        #app {
+            padding-bottom: 130px;
+        }
+
+        /* Barra de navegação inferior */
+        .bottom-nav {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 350px;
+            max-width: calc(100% - 30px);
+            height: 85px;
+
+            background-color: #72101D;
+            border-radius: 32px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+
+            padding: 10px 15px;
+            margin: 0;
+            z-index: 1000;
+        }
+
+        /* Itens da navbar */
+        .bottom-nav .nav-item {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* Botões */
+        .bottom-nav .nav-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 60px;
+            height: 60px;
+            padding: 0;
+
+            background: transparent;
+            border: none;
+            border-radius: 20px;
+            color: white;
+
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        /* Ícones */
+        .bottom-nav .nav-link i {
+            font-size: 35px;
+        }
+
+        /* Hover */
+        .bottom-nav .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: white;
+        }
+
+        /* Botão ativo */
+        .bottom-nav .nav-link.active {
+            background-color: transparent;
+            color: white;
+        }
+
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .bottom-nav {
+                width: 90%;
+                height: 75px;
+                bottom: 15px;
+                border-radius: 28px;
+            }
+
+            .bottom-nav .nav-link {
+                width: 55px;
+                height: 55px;
+            }
+
+            .bottom-nav .nav-link i {
+                font-size: 30px;
+            }
+        }

@@ -23,17 +23,14 @@ export const homeHtml = `
       <span>Governo e documentos</span>
       <i class="bi bi-person-vcard home-icon"></i>
     </div>
-
     <div class="home-card" id="transit">
       <span>Trânsito</span>
       <i class="bi bi-car-front-fill home-icon"></i>
     </div>
-
     <div class="home-card" id="health">
       <span>Saúde</span>
       <i class="bi bi-hospital home-icon"></i>
     </div>
-
     <div class="home-card" id="benefits">
       <span>Benefícios e dinheiro</span>
       <i class="bi bi-cash-coin home-icon"></i>
