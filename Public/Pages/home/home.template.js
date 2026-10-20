@@ -8,6 +8,7 @@ export const homeHtml = `
       <i class="bi bi-search"></i>
     </span>
     <input
+      id="searchBar"
       type="text"
       class="form-control"
       placeholder="Pesquise aqui..."
