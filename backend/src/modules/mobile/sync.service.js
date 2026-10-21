@@ -7,6 +7,5 @@ export default async function syncService(datePreviousUpdate){
     .gt(date)
     .lean()
     .exec()
-    console.log(response)
     return response
 }

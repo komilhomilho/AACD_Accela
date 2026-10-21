@@ -11,6 +11,14 @@ export async function switchPage(idDaPagina) {
         return;
     }
 
+    const navbar = document.querySelector('nav'); 
+    
+    if (idDaPagina === 'redirect') {
+        navbar.style.display = 'none'
+    } else {
+        navbar.style.display = ''
+    }
+
     app.innerHTML = dadosDaPagina.html;
 
     if (dadosDaPagina.js) {
@@ -33,7 +41,7 @@ async function initializeApp() {
     console.log(apiResponse)
     if (apiResponse && apiResponse.data.links && apiResponse.data.links.length > 0) {
         console.log(`Yay! We found ${apiResponse.data.length} new links.`);
-        
+
         storageService.saveNewData(apiResponse.data.links);
     } else {
         console.log("The app is already 100% up to date, no news.");
@@ -110,7 +118,7 @@ document.addEventListener('click', async (evento) => {
 switchPage('home');
 document.addEventListener('focusin', (event) => {
     if (event.target && event.target.id === 'searchBar') {
-        switchPage('global_search');
+        switchPage('global_search')
     }
 });
 initializeApp();
