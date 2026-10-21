@@ -1,0 +1,59 @@
+
+/* FAQ - Botões vermelhos */
+.cor_vermelha {
+    background-color: #72101D;
+}
+
+.accordion-button {
+    color: white;
+    border-radius: 15px !important;
+}
+
+.accordion-button.cor_vermelha,
+.accordion-button.cor_vermelha:not(.collapsed) {
+    background-color: #72101D !important;
+    color: white !important;
+    box-shadow: none;
+}
+
+/* FAQ - Fundo das respostas cinza */
+.accordion-body {
+    background-color: #d3d3d3;
+    color: #333333;
+    border-radius: 0 0 15px 15px;
+}
+
+/* Espaçamento entre as caixas do FAQ */
+.accordion-item {
+    margin-bottom: 15px;
+    border-radius: 15px !important;
+    overflow: hidden;
+    border: 1px solid #72101D;
+}
+
+/* Quando expandido, arredonda apenas a parte superior */
+.accordion-button:not(.collapsed) {
+    border-radius: 15px 15px 0 0 !important;
+}
+
+/* Remove as bordas automáticas entre itens do Bootstrap */
+.accordion-item + .accordion-item {
+    border-top: 1px solid #72101D;
+    margin-top: 15px;
+}
+
+/* Título FAQ */
+.accordion h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+}
+
+/* Setas brancas */
+.accordion-button::after {
+    filter: brightness(0) invert(1) !important;
+}
+
+/* Manter as setas brancas ao expandir */
+.accordion-button:not(.collapsed)::after {
+    filter: brightness(0) invert(1) !important;
+}
