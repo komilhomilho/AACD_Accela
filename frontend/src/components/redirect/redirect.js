@@ -13,5 +13,5 @@ export function iniciar() {
         sessionStorage.removeItem('redirectTarget');
         window.open(targetUrl, '_blank');
         switchPage('home');
-    }, 1000000);
+    }, 1500);
 }
