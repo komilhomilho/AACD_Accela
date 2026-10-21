@@ -7,7 +7,6 @@ export default async function syncServiceController(req,res,next) {
         throw new ArgumentError('The Parameter "last_sync" is mandatory!')
     }
     const data = await syncService(last_sync)
-    console.log(data)
     return res.status(200).json({
         "links": data
     })
