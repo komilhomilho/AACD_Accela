@@ -91,7 +91,7 @@ function atualizarNavbar(pagina) {
 }
 
 document.addEventListener('click', async (evento) => {
-
+    // Botões de tamanho da fonte
     const btnAumentar = evento.target.closest('#btn-fonte-aumentar');
     if (btnAumentar) {
         if (tamanhoFonteAtual < 160) {
@@ -110,6 +110,7 @@ document.addEventListener('click', async (evento) => {
         return;
     }
 
+    // Abertura/Fechamento do menu de acessibilidade
     const btnAcessibilidade = evento.target.closest('#accesibility');
     if (btnAcessibilidade) {
         const icone = btnAcessibilidade.querySelector('.toggle-icon');
@@ -174,44 +175,26 @@ if (window.VLibras) {
 document.getElementById('vlibras-button').addEventListener('click', function (evento) {
     evento.preventDefault();
     evento.stopPropagation();
-    const vlibraswrapper = document.querySelector("#vlibras-access-wrapper");
-
-    const botaoVlibrasOriginal = document.querySelector('[vw-access-button]');
-    if (botaoVlibrasOriginal) {
-        botaoVlibrasOriginal.click(); 
+    
+    const shadowWrapper = document.querySelector('#vlibras-access-wrapper');
+    if (shadowWrapper && shadowWrapper.shadowRoot) {
+        const shadowBtn = shadowWrapper.shadowRoot.querySelector('#vlibras-button');
+        if (shadowBtn) shadowBtn.click();
+    } else {
+        const botaoVlibrasOriginal = document.querySelector('[vw-access-button]');
+        if (botaoVlibrasOriginal) {
+            botaoVlibrasOriginal.click(); 
+        }
     }
 
     const containerAcessibilidade = document.getElementById('accesibility');
     const icone = containerAcessibilidade.querySelector('.toggle-icon');
     
     if (containerAcessibilidade.classList.contains('expandido')) {
-        console.log(vlibraswrapper);
-        if (vlibraswrapper) vlibraswrapper.style.display = "";
         containerAcessibilidade.classList.remove('expandido');
         icone.classList.replace('bi-x-circle', 'bi-universal-access');
     }
 });
-
-const observador = new MutationObserver(() => {
-    const elementosVlibras = document.querySelectorAll('#vlibras-access, #vlibras-access-wrapper, [vw]');
-
-    elementosVlibras.forEach(elemento => {
-        if (elemento && elemento.hasAttribute('style')) {
-            elemento.removeAttribute("style"); 
-            console.log("Estilo inline limpo pelo Observer:", elemento.id || elemento.tagName);
-        }
-    });
-});
-
-observador.observe(document.body, {
-    childList: true,
-    subtree: true,
-    attributes: true, 
-    attributeFilter: ['style'] 
-});
-
-window.switchPage = switchPage;
-switchPage('home');
 
 document.addEventListener('focusin', (event) => {
     if (event.target && event.target.id === 'searchBar') {
@@ -219,4 +202,6 @@ document.addEventListener('focusin', (event) => {
     }
 });
 
+window.switchPage = switchPage;
+switchPage('home');
 initializeApp();
