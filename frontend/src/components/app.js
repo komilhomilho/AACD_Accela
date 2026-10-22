@@ -45,6 +45,10 @@ async function switchPage(idDaPagina, registrarHistorico = true) {
             console.error(`Erro ao carregar o script da página ${idDaPagina}:`, erro);
         }
     }
+
+    if (window.VLibras && window.VLibras.Widget) {
+        window.dispatchEvent(new Event('load'));
+    }
 }
 
 async function initializeApp() {
@@ -53,7 +57,7 @@ async function initializeApp() {
     console.log(`Checking for updates since: ${lastDate}`);
     const apiResponse = await mobileService.syncData(lastDate);
     console.log(apiResponse);
-    
+
     if (apiResponse && apiResponse.data.links && apiResponse.data.links.length > 0) {
         console.log(`Yay! We found ${apiResponse.data.length} new links.`);
         storageService.saveNewData(apiResponse.data.links);
@@ -90,7 +94,7 @@ document.addEventListener('click', async (evento) => {
 
     const btnAumentar = evento.target.closest('#btn-fonte-aumentar');
     if (btnAumentar) {
-        if (tamanhoFonteAtual < 160) { 
+        if (tamanhoFonteAtual < 160) {
             tamanhoFonteAtual += 10;
             aplicarTamanhoFonte();
         }
@@ -99,7 +103,7 @@ document.addEventListener('click', async (evento) => {
 
     const btnDiminuir = evento.target.closest('#btn-fonte-diminuir');
     if (btnDiminuir) {
-        if (tamanhoFonteAtual > 80) { 
+        if (tamanhoFonteAtual > 80) {
             tamanhoFonteAtual -= 10;
             aplicarTamanhoFonte();
         }
@@ -110,10 +114,10 @@ document.addEventListener('click', async (evento) => {
     if (btnAcessibilidade) {
         const icone = btnAcessibilidade.querySelector('.toggle-icon');
         const estaAberto = btnAcessibilidade.classList.contains('expandido');
-        const clicouNoIcone = evento.target.closest('.toggle-icon'); 
+        const clicouNoIcone = evento.target.closest('.toggle-icon');
 
         if (estaAberto && !clicouNoIcone) {
-            return; 
+            return;
         }
 
         if (!estaAberto) {
@@ -123,7 +127,7 @@ document.addEventListener('click', async (evento) => {
             btnAcessibilidade.classList.remove('expandido');
             icone.classList.replace('bi-x-circle', 'bi-universal-access');
         }
-        return; 
+        return;
     }
 
     const botao = evento.target.closest('.bottom-nav [data-page]');
@@ -161,6 +165,49 @@ window.addEventListener('popstate', (event) => {
             atualizarNavbar('home');
         }
     }
+});
+
+if (window.VLibras) {
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+}
+
+document.getElementById('vlibras-button').addEventListener('click', function (evento) {
+    evento.preventDefault();
+    evento.stopPropagation();
+    const vlibraswrapper = document.querySelector("#vlibras-access-wrapper");
+
+    const botaoVlibrasOriginal = document.querySelector('[vw-access-button]');
+    if (botaoVlibrasOriginal) {
+        botaoVlibrasOriginal.click(); 
+    }
+
+    const containerAcessibilidade = document.getElementById('accesibility');
+    const icone = containerAcessibilidade.querySelector('.toggle-icon');
+    
+    if (containerAcessibilidade.classList.contains('expandido')) {
+        console.log(vlibraswrapper);
+        if (vlibraswrapper) vlibraswrapper.style.display = "";
+        containerAcessibilidade.classList.remove('expandido');
+        icone.classList.replace('bi-x-circle', 'bi-universal-access');
+    }
+});
+
+const observador = new MutationObserver(() => {
+    const elementosVlibras = document.querySelectorAll('#vlibras-access, #vlibras-access-wrapper, [vw]');
+
+    elementosVlibras.forEach(elemento => {
+        if (elemento && elemento.hasAttribute('style')) {
+            elemento.removeAttribute("style"); 
+            console.log("Estilo inline limpo pelo Observer:", elemento.id || elemento.tagName);
+        }
+    });
+});
+
+observador.observe(document.body, {
+    childList: true,
+    subtree: true,
+    attributes: true, 
+    attributeFilter: ['style'] 
 });
 
 window.switchPage = switchPage;

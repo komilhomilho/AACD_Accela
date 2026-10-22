@@ -24,7 +24,7 @@ export function iniciar() {
         container.innerHTML = '';
 
         if (!itemsToRender || itemsToRender.length === 0) {
-            container.innerHTML = '<p class="text-muted text-center mt-4">Nenhum serviço encontrado nesta categoria.</p>';
+            container.innerHTML = '<p class="text-muted text-center mt-4 fg-black">Nenhum serviço encontrado nesta categoria.</p>';
             return;
         }
 

@@ -13,8 +13,6 @@
         integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-
-    <!-- CSS das páginas -->
     <link rel="stylesheet" href="/src/assets/css/redirect.css">
     <link rel="stylesheet" href="/src/assets/css/global_search.css">
     <link rel="stylesheet" href="/src/assets/css/home.css">
@@ -26,7 +24,7 @@
     <script type="module" src="./index.js"></script>
 </head>
 
-<body class="min-vh-100 bg-inverse">
+<body class="min-vh-100  bg-inverse">
     <div class="d-flex justify-content-center align-items-center">
         <img src="../src/assets/img/vetorizador_de_imagens_por_ia_gratuito_cf0loowxjk02o19lldy3.svg" class="w-12"></img>
     </div>
@@ -35,25 +33,24 @@
 
     <nav aria-label="Navegação principal">
         <ul class="nav nav-pills bottom-nav">
-
             <li class="nav-item">
-                <button class="nav-link active" type="button" data-page="home" aria-label="Início" aria-current="page">
-                    <i class="bi bi-house-fill"></i>
+                <button class="nav-link active" type="button" data-page="home">
+                    <span class="visually-hidden">Página Inicial</span> 
+                    <i class="bi bi-house-fill" aria-hidden="true"></i>
                 </button>
             </li>
-
             <li class="nav-item">
-                <button class="nav-link" type="button" data-page="faq" aria-label="Ajuda">
-                    <i class="bi bi-headset"></i>
+                <button class="nav-link" type="button" data-page="faq">
+                    <span class="visually-hidden">Central de Ajuda e Dúvidas</span>
+                    <i class="bi bi-headset" aria-hidden="true"></i>
                 </button>
             </li>
-
             <li class="nav-item">
-                <button class="nav-link" type="button" data-page="history" aria-label="Perfil">
-                    <i class="bi bi-clock-history"></i>
+                <button class="nav-link" type="button" data-page="history">
+                    <span class="visually-hidden">Histórico de Perfil</span>
+                    <i class="bi bi-clock-history" aria-hidden="true"></i>
                 </button>
             </li>
-
         </ul>
     </nav>
 
@@ -63,8 +60,8 @@
         <div class="acessibility-menu">
             <h6 class="text-white fw-bold mb-3 text-center w-100">Acessibilidade</h6>
 
-            <button class="btn-acesso w-100 mb-2" id="btn-libras">
-                <i class="bi bi-person-video2 fs-5"></i>
+            <button class="btn-acesso w-100 mb-2" id="vlibras-button">
+                <img src="https://vlibras.gov.br/app/assets/images/vlibras-access.svg" alt="" class="fs-5" aria-hidden="true">
                 <span>Tradutor de Libras</span>
             </button>
 
@@ -91,6 +88,15 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
 </body>
 
 </html>
