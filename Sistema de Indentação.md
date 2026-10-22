@@ -1,5 +1,7 @@
 ```
 └── 📁AACD_Accela
+    └── 📁.vscode
+        ├── settings.json
     └── 📁backend
         └── 📁src
             └── 📁config
@@ -38,42 +40,37 @@
     └── 📁frontend
         └── 📁public
             ├── index.html
+            ├── logo.png
         └── 📁src
             └── 📁assets
                 └── 📁css
                     ├── faq.css
-                    ├── favorites.css
                     ├── global_search.css
                     ├── global.css
                     ├── home.css
-                    ├── login.css
                     ├── redirect.css
-                    ├── sign_up.css
                     ├── specify_category.css
+                    ├── welcome.css
                 └── 📁img
                     ├── img.jpeg
+                    ├── logo_texto_branco.svg
+                    ├── logo_texto_preto.svg
             └── 📁components
                 └── 📁faq
                     ├── faq.js
                     ├── faq.template.js
-                └── 📁favorites
-                    ├── favorites.js
-                    ├── favorites.template.js
                 └── 📁global_search
                     ├── global_search.js
                     ├── global_search.template.js
+                └── 📁history
+                    ├── history.js
+                    ├── history.template.js
                 └── 📁home
                     ├── home.js
                     ├── home.template.js
-                └── 📁login
-                    ├── login.js
-                    ├── login.template.js
                 └── 📁redirect
                     ├── redirect.js
                     ├── redirect.template.js
-                └── 📁sign_up
-                    ├── sign_up.js
-                    ├── sign_up.template.js
                 └── 📁specify_category
                     └── 📁benefits
                         ├── benefits.js
@@ -87,6 +84,9 @@
                     └── 📁transit
                         ├── transit.js
                         ├── transit.template.js
+                └── 📁welcome
+                    ├── welcome.js
+                    ├── welcome.template.js
                 ├── app.js
                 ├── componentController.js
             └── 📁services
@@ -95,7 +95,7 @@
                 ├── storage.service.js
         └── 📁temp
             ├── parateste_antonio.html
-    ├── .env
     ├── .gitignore
-    └── README.md
+    ├── README.md
+    └── Sistema de Indentação.md
 ```

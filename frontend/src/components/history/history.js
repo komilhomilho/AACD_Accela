@@ -9,7 +9,7 @@ export function iniciar() {
     container.innerHTML = '';
 
     if (arrayHistorico.length === 0) {
-        container.innerHTML = '<p class="text-center text-muted mt-5">Você ainda não acessou nenhum link.</p>';
+        container.innerHTML = '<p class="text-center text-muted mt-5 fg-black">Você ainda não acessou nenhum link.</p>';
         return;
     }
 
