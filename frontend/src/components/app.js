@@ -175,7 +175,7 @@ if (window.VLibras) {
 document.getElementById('vlibras-button').addEventListener('click', function (evento) {
     evento.preventDefault();
     evento.stopPropagation();
-    
+
     const shadowWrapper = document.querySelector('#vlibras-access-wrapper');
     if (shadowWrapper && shadowWrapper.shadowRoot) {
         const shadowBtn = shadowWrapper.shadowRoot.querySelector('#vlibras-button');
@@ -183,13 +183,13 @@ document.getElementById('vlibras-button').addEventListener('click', function (ev
     } else {
         const botaoVlibrasOriginal = document.querySelector('[vw-access-button]');
         if (botaoVlibrasOriginal) {
-            botaoVlibrasOriginal.click(); 
+            botaoVlibrasOriginal.click();
         }
     }
 
     const containerAcessibilidade = document.getElementById('accesibility');
     const icone = containerAcessibilidade.querySelector('.toggle-icon');
-    
+
     if (containerAcessibilidade.classList.contains('expandido')) {
         containerAcessibilidade.classList.remove('expandido');
         icone.classList.replace('bi-x-circle', 'bi-universal-access');
@@ -202,20 +202,24 @@ let modoEscuroAtivo = localStorage.getItem('modoEscuro') === 'true';
 function aplicarModoEscuro(ativo) {
     const mainApp = document.getElementById('app');
     const logoImg = document.getElementById('logo-img');
-    
+
     if (ativo) {
         document.body.classList.replace('bg-white', 'bg-1');
-        if (mainApp) mainApp.classList.replace('bg-white', 'bg-1');
-        
-        if (logoImg) logoImg.src = "/src/assets/img/logo_texto_branco.svg"; 
-        
+        if (mainApp) { 
+            mainApp.classList.replace('bg-white', 'bg-1') 
+            mainApp.classList.replace("fg-black", "fg-white")
+        };
+
+        if (logoImg) logoImg.src = "/src/assets/img/logo_texto_branco.svg";
+
         if (switchContraste) switchContraste.checked = true;
     } else {
         document.body.classList.replace('bg-1', 'bg-white');
         if (mainApp) mainApp.classList.replace('bg-1', 'bg-white');
+
+        if (logoImg) logoImg.src = "/src/assets/img/logo_texto_preto.svg";
         
-        if (logoImg) logoImg.src = "/src/assets/img/logo_texto_preto.svg"; 
-        
+        mainApp.classList.replace("fg-white", "fg-black")
         if (switchContraste) switchContraste.checked = false;
     }
 }

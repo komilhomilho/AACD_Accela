@@ -1,7 +1,7 @@
 export const faqHtml = `
 <section class="accordion mb-5" id="accordionExample" aria-labelledby="faq-title">
 
- <h2 id="faq-title" class="mb-4 text-center fw-bold fs-2 fg-black">
+ <h2 id="faq-title" class="mb-4 text-center fw-bold fs-2">
   FAQ - Perguntas Frequentes
  </h2>
 
