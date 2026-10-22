@@ -78,9 +78,9 @@
                     └── 📁benefits
                         ├── benefits.js
                         ├── benefits.template.js
-                    └── 📁gov_doc
-                        ├── gov_doc.js
-                        ├── gov_doc.template.js
+                    └── 📁doc
+                        ├── doc.js
+                        ├── doc.template.js
                     └── 📁health
                         ├── health.js
                         ├── health.template.js

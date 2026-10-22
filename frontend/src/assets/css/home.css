@@ -1,5 +1,3 @@
-
-/* Página principal */
 .home {
     display: flex;
     flex-direction: column;
@@ -11,7 +9,6 @@
     box-sizing: border-box;
 }
 
-/* Barra de pesquisa no topo */
 .home-search {
     width: 100%;
     max-width: 500px;
@@ -32,27 +29,16 @@
     border-radius: 0 10px 10px 0;
 }
 
-/* Área dos quatro cards */
 .home-container {
     display: flex;
     flex-direction: column;
-
-    /* Agrupa os cards no centro */
     justify-content: center;
     align-items: center;
-
     flex: 1;
     width: 100%;
-
-    /* Espaçamento real entre os cards */
     gap: 30px;
-
-    /* Distância da barra de pesquisa */
-    margin-top: 0px;
 }
 
-
-/* Cards responsivos */
 .home-card {
     display: flex;
     align-items: center;
@@ -61,12 +47,9 @@
     width: 100%;
     max-width: 500px;
 
-    /* Cresce conforme a altura da tela */
-    min-height: 0;
-    height: clamp(70px, 12dvh, 140px);
+    min-height: clamp(4.3rem, 12dvh, 8.7rem);
     flex-shrink: 1;
 
-    /* Espaçamento interno responsivo */
     padding: clamp(12px, 3vw, 25px);
 
     background-color: #72101D;
@@ -74,8 +57,7 @@
     border: none;
     border-radius: 12px;
 
-    /* Fonte responsiva */
-    font-size: clamp(20px, 5.5vw, 28px);
+    font-size: clamp(1.25rem, 5.5vw, 1.75rem);
     font-weight: bold;
     font-family: inherit;
 
@@ -84,25 +66,21 @@
     transition: background-color 0.2s ease;
 }
 
-/* Texto centralizado */
 .home-card > span {
     flex: 1;
     text-align: center;
 }
 
-/* Ícones responsivos */
 .home-card .home-icon {
-    flex: 0 0 clamp(35px, 10vw, 50px);
+    flex: 0 0 clamp(2.18rem, 10vw, 3.12rem);
 
-    font-size: clamp(26px, 8vw, 40px);
+    font-size: clamp(1.625rem, 8vw, 2.5rem);
     font-weight: normal;
     text-align: center;
     line-height: 1;
     color: white;
 }
 
-/* Efeito hover */
 .home-card:hover {
     background-color: #590c16;
 }
-

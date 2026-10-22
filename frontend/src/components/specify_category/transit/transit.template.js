@@ -4,7 +4,7 @@ export const specifyCategoryTransitHtml = `
 
   <!-- Categoria no topo -->
   <div class="specify-header">
-    <span>Trânsito</span>
+    <span>Transito</span>
     <i class="bi bi-car-front-fill specify-icon"></i>
   </div>
 
@@ -14,11 +14,12 @@ export const specifyCategoryTransitHtml = `
       <i class="bi bi-search"></i>
     </span>
     <input
-      type="text"
-      class="form-control"
-      placeholder="Pesquise aqui..."
-      aria-label="Pesquisar"
-    >
+    type="text"
+    class="form-control"
+    placeholder="Pesquise aqui..."
+    aria-label="Pesquisar"
+    autofocus
+  >
   </div>
 
   <!-- Serviços -->

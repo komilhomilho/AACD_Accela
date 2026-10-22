@@ -1,9 +1,7 @@
 
 export const homeHtml = `
-<div class="home">
-
   <!-- Barra de pesquisa -->
-  <div class="input-group home-search">
+  <div class="input-group home-search mb-3">
     <span class="input-group-text">
       <i class="bi bi-search"></i>
     </span>
@@ -17,14 +15,14 @@ export const homeHtml = `
   </div>
 
   <!-- Categorias -->
-  <div class="home-container">
+  <div class="home-container mt-8">
 
-    <div class="home-card" id="gov_doc">
-      <span>Governo e documentos</span>
+    <div class="home-card" id="doc">
+      <span>Documentos</span>
       <i class="bi bi-person-vcard home-icon"></i>
     </div>
     <div class="home-card" id="transit">
-      <span>Trânsito</span>
+      <span>Transporte</span>
       <i class="bi bi-car-front-fill home-icon"></i>
     </div>
     <div class="home-card" id="health">
@@ -32,7 +30,7 @@ export const homeHtml = `
       <i class="bi bi-hospital home-icon"></i>
     </div>
     <div class="home-card" id="benefits">
-      <span>Benefícios e dinheiro</span>
+      <span>Benefícios</span>
       <i class="bi bi-cash-coin home-icon"></i>
     </div>
 

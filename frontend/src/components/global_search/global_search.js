@@ -1,5 +1,4 @@
 import storageService from '../../services/storage.service.js';
-import { switchPage } from '../app.js';
 
 export function iniciar() {
     const searchInput = document.getElementById('searchBarGlobal');
@@ -13,7 +12,7 @@ export function iniciar() {
 
     function renderResults(itemsToRender) {
         if (!searchResultsContainer) return;
-        
+
         searchResultsContainer.innerHTML = '';
 
         if (!itemsToRender || itemsToRender.length === 0) {
@@ -31,20 +30,22 @@ export function iniciar() {
             const cardElement = document.createElement('div');
             cardElement.classList.add('custom-card', 'shadow-sm', 'p-3', 'mb-2', 'bg-body-tertiary', 'rounded');
             cardElement.style.cursor = 'pointer';
-            
+
             const displayTitle = item.titulo || item.title || item.nome || item.name || 'Link sem título';
             const displayUrl = item.URL || item.link || '#';
 
             cardElement.innerHTML = `
-                <h5 class="mb-1">${displayTitle}</h5>
-                <p class="mb-0 small text-primary text-truncate">${displayUrl}</p>
-            `;
+    <div class="w-100" style="overflow: hidden;">
+        <h5 class="mb-1 text-truncate" style="max-width: 100%;">${displayTitle}</h5>
+        <p class="mb-0 small text-primary text-truncate" style="max-width: 100%;">${displayUrl}</p>
+    </div>
+`;
 
-            // Clique no card salva a URL no sessionStorage e muda de página
             cardElement.addEventListener('click', () => {
                 if (displayUrl && displayUrl !== '#') {
+                    storageService.storageClickLink(displayTitle, displayUrl);
                     sessionStorage.setItem('redirectTarget', displayUrl);
-                    switchPage('redirect');
+                    window.switchPage('redirect');
                 }
             });
 

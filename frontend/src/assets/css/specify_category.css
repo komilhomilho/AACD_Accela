@@ -1,5 +1,3 @@
-
-/* Página da categoria */
 .specify-category {
     display: flex;
     flex-direction: column;
@@ -11,7 +9,6 @@
     box-sizing: border-box;
 }
 
-/* Container principal */
 .specify-header {
     display: flex;
     align-items: center;
@@ -26,28 +23,25 @@
     color: white;
     border-radius: 12px;
 
-    font-size: 20px;
+    font-size: 1.25rem; 
     font-weight: bold;
     box-sizing: border-box;
 }
 
-/* Texto centralizado */
 .specify-header span {
     flex: 1;
     text-align: center;
 }
 
-/* Ícone da categoria */
 .specify-icon {
     flex: 0 0 40px;
-    font-size: 40px;
+    font-size: 2.5rem; 
     font-weight: normal;
     text-align: center;
     line-height: 1;
     color: white;
 }
 
-/* Barra de pesquisa */
 .specify-search {
     width: 100%;
     max-width: 500px;
@@ -58,7 +52,7 @@
     background-color: #d3d3d3;
     border: none;
     border-radius: 10px 0 0 10px;
-    font-size: 22px;
+    font-size: 1.375rem; 
 }
 
 .specify-search .form-control {
@@ -68,7 +62,6 @@
     border-radius: 0 10px 10px 0;
 }
 
-/* Área dos serviços */
 .specify-container {
     display: flex;
     flex-direction: column;
@@ -80,7 +73,6 @@
     margin-top: 25px;
 }
 
-/* Botões dos serviços */
 .specify-card {
     width: 90%;
     min-height: 45px;
@@ -91,19 +83,17 @@
     border: none;
     border-radius: 12px;
 
-    font-size: 16px;
+    font-size: 1rem; 
     text-align: left;
     cursor: pointer;
 
     transition: background-color 0.2s ease;
 }
 
-/* Efeito ao passar o mouse */
 .specify-card:hover {
     background-color: #590c16;
 }
 
-/* Ajustes para celulares */
 @media (max-width: 480px) {
     .specify-category {
         padding: 20px 15px;
@@ -112,11 +102,11 @@
     .specify-header {
         min-height: 85px;
         padding: 18px 20px;
-        font-size: 18px;
+        font-size: 1.125rem; 
     }
 
     .specify-icon {
-        font-size: 36px;
+        font-size: 2.25rem; 
     }
 
     .specify-search {
@@ -126,6 +116,6 @@
     .specify-card {
         min-height: 40px;
         padding: 8px 12px;
-        font-size: 16px;
+        font-size: 1rem; 
     }
 }

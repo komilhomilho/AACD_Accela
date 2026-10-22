@@ -1,9 +1,19 @@
 import { mapsPages } from './componentController.js';
 import mobileService from '../services/mobile.service.js';
 import storageService from '../services/storage.service.js';
+
 const app = document.getElementById('app');
 
-export async function switchPage(idDaPagina) {
+let tamanhoFonteAtual = parseInt(localStorage.getItem('tamanhoFonte')) || 100;
+
+function aplicarTamanhoFonte() {
+    document.documentElement.style.fontSize = `${tamanhoFonteAtual}%`;
+    localStorage.setItem('tamanhoFonte', tamanhoFonteAtual);
+}
+
+aplicarTamanhoFonte();
+
+async function switchPage(idDaPagina, registrarHistorico = true) {
     const dadosDaPagina = mapsPages[idDaPagina];
 
     if (!dadosDaPagina) {
@@ -11,12 +21,16 @@ export async function switchPage(idDaPagina) {
         return;
     }
 
-    const navbar = document.querySelector('nav'); 
-    
+    if (registrarHistorico) {
+        window.history.pushState({ pagina: idDaPagina }, "", "");
+    }
+
+    const navbar = document.querySelector('nav');
+
     if (idDaPagina === 'redirect') {
-        navbar.style.display = 'none'
+        navbar.style.display = 'none';
     } else {
-        navbar.style.display = ''
+        navbar.style.display = '';
     }
 
     app.innerHTML = dadosDaPagina.html;
@@ -38,10 +52,10 @@ async function initializeApp() {
 
     console.log(`Checking for updates since: ${lastDate}`);
     const apiResponse = await mobileService.syncData(lastDate);
-    console.log(apiResponse)
+    console.log(apiResponse);
+    
     if (apiResponse && apiResponse.data.links && apiResponse.data.links.length > 0) {
         console.log(`Yay! We found ${apiResponse.data.length} new links.`);
-
         storageService.saveNewData(apiResponse.data.links);
     } else {
         console.log("The app is already 100% up to date, no news.");
@@ -51,23 +65,19 @@ async function initializeApp() {
     console.log("My data ready to be displayed on screen:", allMyData);
 }
 
-const botoes = document.querySelectorAll(
-    '.bottom-nav .nav-link'
-);
+const botoes = document.querySelectorAll('.bottom-nav .nav-link');
 
 const categorias = {
-    "Governo e documentos": "gov_doc",
+    "Documentos": "doc",
     "Trânsito": "transit",
     "Saúde": "health",
-    "Benefícios e dinheiro": "benefits"
+    "Benefícios": "benefits"
 };
 
 function atualizarNavbar(pagina) {
     botoes.forEach(botao => {
         const ativo = botao.dataset.page === pagina;
-
         botao.classList.toggle('active', ativo);
-
         if (ativo) {
             botao.setAttribute('aria-current', 'page');
         } else {
@@ -78,47 +88,88 @@ function atualizarNavbar(pagina) {
 
 document.addEventListener('click', async (evento) => {
 
-    // Navegação pela navbar
-    const botao = evento.target.closest(
-        '.bottom-nav [data-page]'
-    );
+    const btnAumentar = evento.target.closest('#btn-fonte-aumentar');
+    if (btnAumentar) {
+        if (tamanhoFonteAtual < 160) { 
+            tamanhoFonteAtual += 10;
+            aplicarTamanhoFonte();
+        }
+        return;
+    }
 
+    const btnDiminuir = evento.target.closest('#btn-fonte-diminuir');
+    if (btnDiminuir) {
+        if (tamanhoFonteAtual > 80) { 
+            tamanhoFonteAtual -= 10;
+            aplicarTamanhoFonte();
+        }
+        return;
+    }
+
+    const btnAcessibilidade = evento.target.closest('#accesibility');
+    if (btnAcessibilidade) {
+        const icone = btnAcessibilidade.querySelector('.toggle-icon');
+        const estaAberto = btnAcessibilidade.classList.contains('expandido');
+        const clicouNoIcone = evento.target.closest('.toggle-icon'); 
+
+        if (estaAberto && !clicouNoIcone) {
+            return; 
+        }
+
+        if (!estaAberto) {
+            btnAcessibilidade.classList.add('expandido');
+            icone.classList.replace('bi-universal-access', 'bi-x-circle');
+        } else {
+            btnAcessibilidade.classList.remove('expandido');
+            icone.classList.replace('bi-x-circle', 'bi-universal-access');
+        }
+        return; 
+    }
+
+    const botao = evento.target.closest('.bottom-nav [data-page]');
     if (botao) {
         const pagina = botao.dataset.page;
-
-        await switchPage(pagina);
+        await window.switchPage(pagina);
         atualizarNavbar(pagina);
-
         return;
     }
 
     const card = evento.target.closest('.home-card');
-
     if (card) {
         if (!card.isConnected) return;
-
-        const nome = card.querySelector('span')
-            ?.textContent.trim();
-
+        const nome = card.querySelector('span')?.textContent.trim();
         const pagina = categorias[nome];
 
         if (pagina) {
             evento.preventDefault();
             evento.stopImmediatePropagation();
-
-            await switchPage(pagina);
-
+            await window.switchPage(pagina);
             atualizarNavbar('home');
         }
     }
 });
 
-
-
-switchPage('home');
-document.addEventListener('focusin', (event) => {
-    if (event.target && event.target.id === 'searchBar') {
-        switchPage('global_search')
+window.addEventListener('popstate', (event) => {
+    if (event.state && event.state.pagina) {
+        window.switchPage(event.state.pagina, false);
+        if (typeof atualizarNavbar === 'function') {
+            atualizarNavbar(event.state.pagina);
+        }
+    } else {
+        window.switchPage('home', false);
+        if (typeof atualizarNavbar === 'function') {
+            atualizarNavbar('home');
+        }
     }
 });
+
+window.switchPage = switchPage;
+switchPage('home');
+
+document.addEventListener('focusin', (event) => {
+    if (event.target && event.target.id === 'searchBar') {
+        window.switchPage('global_search');
+    }
+});
+
 initializeApp();
