@@ -237,5 +237,5 @@ document.addEventListener('focusin', (event) => {
 });
 
 window.switchPage = switchPage;
-switchPage('home');
+switchPage('welcome');
 initializeApp();
