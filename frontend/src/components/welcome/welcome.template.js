@@ -1,4 +1,5 @@
-export const welcomeHtml = `<div class="redirect-box d-flex flex-column justify-content-center align-items-center text-center p-4">
+export const welcomeHtml = `
+<div class="redirect-box d-flex flex-column justify-content-center align-items-center text-center p-4">
 
     <h1 class="fw-bold mb-3">Bem-vindo ao Accela!</h1>
 
@@ -7,9 +8,7 @@ export const welcomeHtml = `<div class="redirect-box d-flex flex-column justify-
       que fazem parte do seu dia a dia.
     </p>
 
-    <p class="mb-3">
-      Aqui você pode acessar serviços como:
-    </p>
+    <p class="mb-3">Aqui você pode acessar serviços como:</p>
 
     <ul class="text-start mb-4">
       <li>Transporte e atendimento Atende+</li>
@@ -20,8 +19,7 @@ export const welcomeHtml = `<div class="redirect-box d-flex flex-column justify-
 
     <p class="mb-3">
       Escolha uma categoria no menu para encontrar o serviço
-      que procura. Você também pode salvar seus links favoritos
-      para acessá-los com mais facilidade.
+      que procura. Você também poderá salvar seus links favoritos.
     </p>
 
     <p class="redirect-warning small mb-0">
@@ -29,6 +27,16 @@ export const welcomeHtml = `<div class="redirect-box d-flex flex-column justify-
       Ao selecionar um serviço, você será direcionado
       ao site responsável por ele.
     </p>
+    <p></p>
 
-  </div>
-`;
+    <button
+    id="welcomeBtn"
+    type="button"
+    class="btn btn-custom"
+    disabled
+    onclick="localStorage.setItem('@accela:welcome_seen', 'true'); switchPage('home')"
+>
+    Aguarde...
+</button>
+
+</div>`;

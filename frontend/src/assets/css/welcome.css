@@ -1,77 +1,25 @@
-/* Área principal da página */
-.welcome-main {
-    position: relative;
-    width: 100%;
-    min-height: 100%;
-    padding: 30px 16px;
-    box-sizing: border-box;
-}
-
-/* Caixa de boas-vindas */
-.redirect-box {
-    position: relative;
-    width: 100%;
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 45px 35px;
-
+.btn-custom {
     background-color: #72101D;
-    border: 2px solid #ffffff;
-    border-radius: 16px;
-
-    color: #ffffff;
-    text-align: center;
-    box-shadow: 0 6px 24px rgba(114, 16, 29, 0.12);
-
-    /* Permite que o conteúdo cresça com o A+ */
-    height: auto;
-    min-height: 0;
-    overflow-wrap: break-word;
+    color: white;
+    border: 1px solid #72101D;
+    transition: background-color 0.3s ease;
 }
 
-/* Título */
-.redirect-box h1 {
-    color: #ffffff;
-    font-size: 2rem;
-    font-weight: 700;
-    line-height: 1.3;
+.btn-custom:disabled {
+    background-color: #4D0B14;
+    border-color: #4D0B14;
+    color: #ccc;
+    cursor: not-allowed;
+    opacity: 0.8;
 }
 
-/* Parágrafos */
-.redirect-box p {
-    color: #f1e8e9;
-    font-size: 1rem;
-    line-height: 1.7;
+.btn-custom:not(:disabled) {
+    background-color: #81202B;
+    border-color: #81202B;
+    cursor: pointer;
 }
 
-/* Lista de serviços */
-.redirect-box ul {
-    display: inline-block;
-    max-width: 100%;
-    text-align: left;
-    padding-left: 25px;
-    color: #ffffff;
-    line-height: 2;
-}
-
-/* Aviso sobre links externos */
-.redirect-box .redirect-warning {
-    color: #d0bfc2;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
-/* Telas menores */
-@media (max-width: 576px) {
-    .welcome-main {
-        padding: 20px 10px;
-    }
-
-    .redirect-box {
-        padding: 30px 20px;
-    }
-
-    .redirect-box h1 {
-        font-size: 1.6rem;
-    }
+.btn-custom:not(:disabled):hover {
+    background-color: #902630;
+    border-color: #902630;
 }

@@ -2,6 +2,7 @@ import { mapsPages } from './componentController.js';
 import mobileService from '../services/mobile.service.js';
 import storageService from '../services/storage.service.js';
 
+
 const app = document.getElementById('app');
 
 let tamanhoFonteAtual = parseInt(localStorage.getItem('tamanhoFonte')) || 100;
@@ -49,6 +50,7 @@ async function switchPage(idDaPagina, registrarHistorico = true) {
     if (window.VLibras && window.VLibras.Widget) {
         window.dispatchEvent(new Event('load'));
     }
+    
 }
 
 async function initializeApp() {
