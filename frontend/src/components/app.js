@@ -73,7 +73,7 @@ const botoes = document.querySelectorAll('.bottom-nav .nav-link');
 
 const categorias = {
     "Documentos": "doc",
-    "Trânsito": "transit",
+    "Transporte": "transit",
     "Saúde": "health",
     "Benefícios": "benefits"
 };

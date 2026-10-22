@@ -4,7 +4,7 @@ export const specifyCategoryTransitHtml = `
 
   <!-- Categoria no topo -->
   <div class="specify-header">
-    <span>Transito</span>
+    <span>Transporte</span>
     <i class="bi bi-car-front-fill specify-icon"></i>
   </div>
 
