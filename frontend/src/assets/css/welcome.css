@@ -1,28 +1,43 @@
+/* Área principal da página */
+.welcome-main {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+    padding: 30px 16px;
+    box-sizing: border-box;
+}
+
 /* Caixa de boas-vindas */
 .redirect-box {
+    position: relative;
     width: 100%;
     max-width: 700px;
-    margin: 60px auto;
+    margin: 0 auto;
     padding: 45px 35px;
 
     background-color: #72101D;
     border: 2px solid #ffffff;
     border-radius: 16px;
 
-    text-align: center;
     color: #ffffff;
+    text-align: center;
     box-shadow: 0 6px 24px rgba(114, 16, 29, 0.12);
+
+    /* Permite que o conteúdo cresça com o A+ */
+    height: auto;
+    min-height: 0;
+    overflow-wrap: break-word;
 }
 
-/* Título de boas-vindas */
+/* Título */
 .redirect-box h1 {
     color: #ffffff;
     font-size: 2rem;
     font-weight: 700;
-    margin-bottom: 20px;
+    line-height: 1.3;
 }
 
-/* Textos da tela */
+/* Parágrafos */
 .redirect-box p {
     color: #f1e8e9;
     font-size: 1rem;
@@ -32,49 +47,31 @@
 /* Lista de serviços */
 .redirect-box ul {
     display: inline-block;
+    max-width: 100%;
     text-align: left;
     padding-left: 25px;
-    margin-top: 0;
     color: #ffffff;
     line-height: 2;
 }
 
-/* Itens da lista */
-.redirect-box li {
-    padding-left: 5px;
-    margin-bottom: 4px;
-}
-
 /* Aviso sobre links externos */
-.redirect-warning {
-    color: #d0bfc2 !important;
-    font-size: 0.9rem !important;
-    line-height: 1.6 !important;
-    margin: 0;
+.redirect-box .redirect-warning {
+    color: #d0bfc2;
+    font-size: 0.9rem;
+    line-height: 1.6;
 }
 
-/* Responsividade para celulares */
+/* Telas menores */
 @media (max-width: 576px) {
+    .welcome-main {
+        padding: 20px 10px;
+    }
+
     .redirect-box {
-        padding: 30px 22px;
-        margin: 20px auto;
-        border-radius: 14px;
+        padding: 30px 20px;
     }
 
     .redirect-box h1 {
         font-size: 1.6rem;
-    }
-
-    .redirect-box p {
-        font-size: 0.95rem;
-    }
-
-    .redirect-box ul {
-        font-size: 0.95rem;
-        padding-left: 22px;
-    }
-
-    .redirect-warning {
-        font-size: 0.82rem !important;
     }
 }

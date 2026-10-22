@@ -1,7 +1,4 @@
-export const welcomeHtml = `
-<div class="position-fixed top-0 start-0 w-100 h-100 d-flex justify-content-center align-items-center overflow-auto p-3">
-
-  <div class="redirect-box d-flex flex-column justify-content-center align-items-center text-center p-4">
+export const welcomeHtml = `<div class="redirect-box d-flex flex-column justify-content-center align-items-center text-center p-4">
 
     <h1 class="fw-bold mb-3">Bem-vindo ao Accela!</h1>
 
@@ -27,13 +24,11 @@ export const welcomeHtml = `
       para acessá-los com mais facilidade.
     </p>
 
-    <p class="redirect-warning text-muted small mb-0">
+    <p class="redirect-warning small mb-0">
       O Accela reúne links para facilitar seu acesso.
       Ao selecionar um serviço, você será direcionado
       ao site responsável por ele.
     </p>
 
   </div>
-
-</div>
 `;
