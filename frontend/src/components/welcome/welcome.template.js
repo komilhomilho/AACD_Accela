@@ -1,5 +1,5 @@
 export const welcomeHtml = `
-<div class="redirect-box d-flex flex-column justify-content-center align-items-center text-center p-4">
+<div class="redirect-box d-flex flex-column justify-content-center align-items-center text-center p-4 fg-white">
 
     <h1 class="fw-bold mb-3">Bem-vindo ao Accela!</h1>
 
