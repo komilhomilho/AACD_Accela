@@ -1,23 +1,27 @@
-// ant
-import { switchPage } from '../app.js';
+const doc = document.getElementById('doc');
+if (doc) {
+    doc.addEventListener('click', () => {
+        window.switchPage("doc");
+    });
+}
 
-const gov_doc = document.getElementById('gov_doc')
-gov_doc.addEventListener(('click'),()=>[
-    switchPage("gov_doc")
-])
+const transit = document.getElementById('transit');
+if (transit) {
+    transit.addEventListener('click', () => {
+        window.switchPage("transit");
+    });
+}
 
-const transit = document.getElementById('transit')
-transit.addEventListener(('click'),()=>[
-    switchPage("transit")
-])
+const benefits = document.getElementById('benefits');
+if (benefits) {
+    benefits.addEventListener('click', () => {
+        window.switchPage("benefits");
+    });
+}
 
-const benefits = document.getElementById('benefits')
-benefits.addEventListener(('click'),()=>[
-    switchPage("benefits")
-])
-
-const health = document.getElementById('health')
-health.addEventListener(('click'),()=>[
-    switchPage("health")
-])
-
+const health = document.getElementById('health');
+if (health) {
+    health.addEventListener('click', () => {
+        window.switchPage("health");
+    });
+}

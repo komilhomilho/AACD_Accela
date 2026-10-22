@@ -3,7 +3,7 @@ export const specifyCategoryGovDocHtml =`
 
   <!-- Categoria no topo -->
   <div class="specify-header">
-    <span>Governo e documentos</span>
+    <span>Documentos</span>
     <i class="bi bi-person-vcard home-icon"></i>
   </div>
 

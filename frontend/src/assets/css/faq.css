@@ -1,59 +1,93 @@
-
-/* FAQ - Botões vermelhos */
-.cor_vermelha {
-    background-color: #72101D;
+body::-webkit-scrollbar {
+    display: none !important;
 }
 
-.accordion-button {
-    color: white;
+body {
+    scrollbar-width: none !important; 
+    -ms-overflow-style: none !important;
+}
+
+.accordion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.accordion-item {
     border-radius: 15px !important;
+    background-color: transparent;
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+    position: relative;
+    border: none;
+    margin-bottom: 0;
 }
 
-.accordion-button.cor_vermelha,
-.accordion-button.cor_vermelha:not(.collapsed) {
+/* Remove a seta feia nativa do navegador */
+summary {
+    list-style: none !important;
+    cursor: pointer;
+}
+summary::-webkit-details-marker {
+    display: none !important;
+}
+
+/* O seu botão vermelho blindado */
+.accordion-button.cor_vermelha {
     background-color: #72101D !important;
     color: white !important;
     box-shadow: none;
+    border-radius: 15px !important;
+    padding: 16px !important;
+    font-weight: bold;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
 }
 
-/* FAQ - Fundo das respostas cinza */
 .accordion-body {
     background-color: #d3d3d3;
     color: #333333;
     border-radius: 0 0 15px 15px;
+    padding: 16px;
 }
 
-/* Espaçamento entre as caixas do FAQ */
-.accordion-item {
-    margin-bottom: 15px;
-    border-radius: 15px !important;
-    overflow: hidden;
-    border: 1px solid #72101D;
+/* Animações e efeitos de abrir/fechar */
+details[open].accordion-item {
+    transform: scale(1.03);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.25);
+    z-index: 9999 !important;
+    position: relative !important;
+    margin-top: 10px;
+    margin-bottom: 25px;
 }
 
-/* Quando expandido, arredonda apenas a parte superior */
-.accordion-button:not(.collapsed) {
+.accordion:has(details[open]) details:not([open]) {
+    opacity: 0.5;
+    transform: scale(0.97);
+    filter: grayscale(0.2);
+}
+
+details[open] > .accordion-button.cor_vermelha {
     border-radius: 15px 15px 0 0 !important;
 }
 
-/* Remove as bordas automáticas entre itens do Bootstrap */
-.accordion-item + .accordion-item {
-    border-top: 1px solid #72101D;
-    margin-top: 15px;
-}
-
-/* Título FAQ */
-.accordion h1 {
-    font-size: 3.5rem;
-    font-weight: bold;
-}
-
-/* Setas brancas */
+/* A sua setinha branca personalizada */
 .accordion-button::after {
-    filter: brightness(0) invert(1) !important;
+    content: "" !important;
+    display: block !important;
+    flex-shrink: 0;
+    width: 1.25rem !important;
+    height: 1.25rem !important;
+    margin-left: 10px !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 5L8 11L14 5'/%3E%3C/svg%3E") !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+    background-size: 100% !important;
+    transition: transform 0.3s ease-in-out !important; 
 }
 
-/* Manter as setas brancas ao expandir */
-.accordion-button:not(.collapsed)::after {
-    filter: brightness(0) invert(1) !important;
+details[open] > .accordion-button::after {
+    transform: rotate(-180deg) !important;
 }
