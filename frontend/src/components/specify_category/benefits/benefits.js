@@ -17,14 +17,14 @@ export function iniciar() {
             textoDasTags = (item.tag || item.categoria || item.category || '').toLowerCase();
         }
 
-        return textoDasTags.includes('deficiência')||textoDasTags.includes('pcd') ||textoDasTags.includes('auxílio');
+        return textoDasTags.includes('beneficio') || textoDasTags.includes('dinheiro');
     });
 
     function renderCategoryResults(itemsToRender) {
         container.innerHTML = '';
 
         if (!itemsToRender || itemsToRender.length === 0) {
-            container.innerHTML = '<p class="text-muted text-center mt-4 fg-black">Nenhum serviço encontrado nesta categoria.</p>';
+            container.innerHTML = '<p class="text-muted text-center mt-4" role="status">Nenhum serviço encontrado nesta categoria.</p>';
             return;
         }
 
@@ -48,19 +48,33 @@ export function iniciar() {
             const displayTitle = item.titulo || item.title || item.nome || item.name || 'Serviço sem título';
             const displayUrl = item.URL || item.link || '#';
 
+            // ATUALIZAÇÃO DE ACESSIBILIDADE AQUI:
+            cardElement.setAttribute('role', 'button'); // Diz ao leitor que é um botão
+            cardElement.setAttribute('tabindex', '0'); // Permite focar com a tecla TAB
+            cardElement.setAttribute('aria-label', `Acessar serviço: ${displayTitle}`); // O que será lido em voz alta
+
+            // O aria-hidden="true" impede que o leitor de tela leia a URL e o título cru de novo
             cardElement.innerHTML = `
-                <div style="min-width: 0; width: 100%;">
+                <div aria-hidden="true" style="min-width: 0; width: 100%;">
                     <h5 class="mb-1 text-truncate" style="color: white; width: 100%;">${displayTitle}</h5>
                     <p class="mb-0 small text-truncate" style="color: #e0e0e0; width: 100%;">${displayUrl}</p>
                 </div>
             `;
 
+            // Ação de clique (Mouse/Toque)
             cardElement.addEventListener('click', () => {
                 if (displayUrl && displayUrl !== '#') {
                     storageService.storageClickLink(displayTitle, displayUrl);
-                    
                     sessionStorage.setItem('redirectTarget', displayUrl);
                     window.switchPage('redirect');
+                }
+            });
+
+            // Ação de teclado (Enter ou Espaço para quem usa leitor de tela/navegação por teclado)
+            cardElement.addEventListener('keydown', (evento) => {
+                if (evento.key === 'Enter' || evento.key === ' ') {
+                    evento.preventDefault(); // Evita que a página role para baixo ao apertar Espaço
+                    cardElement.click(); // Dispara a função de clique acima
                 }
             });
 

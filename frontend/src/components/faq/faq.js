@@ -7,7 +7,7 @@ export function iniciar() {
                 setTimeout(() => {
                     aba.scrollIntoView({
                         behavior: 'smooth',
-                        block: 'start'
+                        block: 'center'
                     });
                 }, 100);
             }

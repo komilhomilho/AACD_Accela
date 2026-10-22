@@ -32,7 +32,7 @@ export function iniciar() {
             cardElement.style.cursor = 'pointer';
 
             const displayTitle = item.titulo || item.title || item.nome || item.name || 'Link sem título';
-            const displayUrl = item.URL || item.link || '#';
+            const displayUrl = item.URL || item.url || item.link || '#'; 
 
             cardElement.innerHTML = `
     <div class="w-100" style="overflow: hidden;">
@@ -66,8 +66,16 @@ export function iniciar() {
 
             const filteredResults = databaseItems.filter(item => {
                 const title = (item.titulo || item.title || item.nome || item.name || '').toLowerCase();
-                const url = (item.url || item.link || '').toLowerCase();
-                return title.includes(searchTerm) || url.includes(searchTerm);
+                const url = (item.URL || item.url || item.link || '').toLowerCase();
+                
+                let textoDasTags = '';
+                if (Array.isArray(item.tags)) {
+                    textoDasTags = item.tags.join(' ').toLowerCase();
+                } else {
+                    textoDasTags = (item.tag || item.tags || item.categoria || item.category || '').toLowerCase();
+                }
+
+                return title.includes(searchTerm) || url.includes(searchTerm) || textoDasTags.includes(searchTerm);
             });
 
             renderResults(filteredResults);
