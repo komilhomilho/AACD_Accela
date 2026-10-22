@@ -18,14 +18,10 @@ function saveNewData(newData) {
     console.log('[storage] trying to save');
     if (!newData || newData.length === 0) return;
 
-    const oldData = getLocalData();
-    const updatedData = [...oldData, ...newData];
-
-    localStorage.setItem(KEYS.DATA, JSON.stringify(updatedData));
+    localStorage.setItem(KEYS.DATA, JSON.stringify(newData));
     localStorage.setItem(KEYS.LAST_SYNC, Date.now().toString());
 }
 
-// Sua função de SALVAR no histórico
 function storageClickLink(titulo, url) {
     const historicoSalvo = localStorage.getItem(KEYS.HISTORICO);
     let arrayHistorico = historicoSalvo ? JSON.parse(historicoSalvo) : [];
