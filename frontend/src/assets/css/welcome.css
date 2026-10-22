@@ -1,0 +1,80 @@
+/* Caixa de boas-vindas */
+.redirect-box {
+    width: 100%;
+    max-width: 700px;
+    margin: 60px auto;
+    padding: 45px 35px;
+
+    background-color: #72101D;
+    border: 2px solid #ffffff;
+    border-radius: 16px;
+
+    text-align: center;
+    color: #ffffff;
+    box-shadow: 0 6px 24px rgba(114, 16, 29, 0.12);
+}
+
+/* Título de boas-vindas */
+.redirect-box h1 {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Textos da tela */
+.redirect-box p {
+    color: #f1e8e9;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+/* Lista de serviços */
+.redirect-box ul {
+    display: inline-block;
+    text-align: left;
+    padding-left: 25px;
+    margin-top: 0;
+    color: #ffffff;
+    line-height: 2;
+}
+
+/* Itens da lista */
+.redirect-box li {
+    padding-left: 5px;
+    margin-bottom: 4px;
+}
+
+/* Aviso sobre links externos */
+.redirect-warning {
+    color: #d0bfc2 !important;
+    font-size: 0.9rem !important;
+    line-height: 1.6 !important;
+    margin: 0;
+}
+
+/* Responsividade para celulares */
+@media (max-width: 576px) {
+    .redirect-box {
+        padding: 30px 22px;
+        margin: 20px auto;
+        border-radius: 14px;
+    }
+
+    .redirect-box h1 {
+        font-size: 1.6rem;
+    }
+
+    .redirect-box p {
+        font-size: 0.95rem;
+    }
+
+    .redirect-box ul {
+        font-size: 0.95rem;
+        padding-left: 22px;
+    }
+
+    .redirect-warning {
+        font-size: 0.82rem !important;
+    }
+}

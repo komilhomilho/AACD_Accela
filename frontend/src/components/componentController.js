@@ -7,6 +7,7 @@ import { historyHtml } from './history/history.template.js';
 import { specifyCategoryGovDocHtml } from './specify_category/doc/doc.template.js'
 import { specifyCategoryHealthHtml } from './specify_category/health/health.template.js'
 import { specifyCategoryBenefitsHtml } from './specify_category/benefits/benefits.template.js'
+import { welcomeHtml } from './welcome/welcome.js'
 
 export const mapsPages = {
   "faq": {
@@ -44,5 +45,10 @@ export const mapsPages = {
   "benefits":{
     "html": specifyCategoryBenefitsHtml,
     "js": "./specify_category/benefits/benefits.js"
-  }
+  },
+  "welcome": {
+  "html": welcomeHtml,
+  "js": "./welcome/welcome.js"
+}
+
 };
