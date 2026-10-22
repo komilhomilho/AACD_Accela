@@ -243,5 +243,11 @@ document.addEventListener('focusin', (event) => {
 });
 
 window.switchPage = switchPage;
-switchPage('welcome');
+const jaViuBoasVindas = localStorage.getItem('@accela:welcome_seen') === 'true';
+
+if (jaViuBoasVindas) {
+    switchPage('home');
+} else {
+    switchPage('welcome');
+}
 initializeApp();
