@@ -195,6 +195,40 @@ document.getElementById('vlibras-button').addEventListener('click', function (ev
         icone.classList.replace('bi-x-circle', 'bi-universal-access');
     }
 });
+const switchContraste = document.getElementById('switch-contraste');
+
+let modoEscuroAtivo = localStorage.getItem('modoEscuro') === 'true';
+
+function aplicarModoEscuro(ativo) {
+    const mainApp = document.getElementById('app');
+    const logoImg = document.getElementById('logo-img');
+    
+    if (ativo) {
+        document.body.classList.replace('bg-white', 'bg-1');
+        if (mainApp) mainApp.classList.replace('bg-white', 'bg-1');
+        
+        if (logoImg) logoImg.src = "/src/assets/img/logo_texto_branco.svg"; 
+        
+        if (switchContraste) switchContraste.checked = true;
+    } else {
+        document.body.classList.replace('bg-1', 'bg-white');
+        if (mainApp) mainApp.classList.replace('bg-1', 'bg-white');
+        
+        if (logoImg) logoImg.src = "/src/assets/img/logo_texto_preto.svg"; 
+        
+        if (switchContraste) switchContraste.checked = false;
+    }
+}
+
+aplicarModoEscuro(modoEscuroAtivo);
+
+if (switchContraste) {
+    switchContraste.addEventListener('change', (evento) => {
+        const ativado = evento.target.checked;
+        aplicarModoEscuro(ativado);
+        localStorage.setItem('modoEscuro', ativado);
+    });
+}
 
 document.addEventListener('focusin', (event) => {
     if (event.target && event.target.id === 'searchBar') {
