@@ -6,22 +6,25 @@ export function iniciar() {
         return;
     }
 
+    // Espera 2 segundos para o usuário ler
     setTimeout(() => {
         sessionStorage.removeItem('redirectTarget');
-        window.switchPage('home');
         
         let urlFinal = targetUrl;
         if (!urlFinal.startsWith('http://') && !urlFinal.startsWith('https://')) {
             urlFinal = 'https://' + urlFinal;
         }
 
-        const link = document.createElement('a');
-        link.href = urlFinal;
-        
+        // 1. Muda a página internamente
+        try {
+            window.switchPage('home');
+        } catch(e) {}
 
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // 2. Dá uma pausa de 100ms para o iPhone "respirar" e terminar de processar o switchPage.
+        // Só depois dessa pausa ele redireciona para o site externo.
+        setTimeout(() => {
+            window.location.href = urlFinal;
+        }, 100);
 
     }, 1000);
 }
