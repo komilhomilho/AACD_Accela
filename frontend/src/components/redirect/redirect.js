@@ -1,6 +1,3 @@
-// frontend/src/components/redirect/redirect.js
-
-
 export function iniciar() {
     const targetUrl = sessionStorage.getItem('redirectTarget');
 
@@ -11,7 +8,7 @@ export function iniciar() {
 
     setTimeout(() => {
         sessionStorage.removeItem('redirectTarget');
-        window.open(targetUrl, '_blank');
-        window.switchPage('home');
+        window.switchPage("home");
+        window.location.href = targetUrl;
     }, 1500);
 }
