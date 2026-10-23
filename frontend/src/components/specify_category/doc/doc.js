@@ -17,7 +17,7 @@ export function iniciar() {
             textoDasTags = (item.tag || item.categoria || item.category || '').toLowerCase();
         }
 
-        return textoDasTags.includes('cadastro');
+        return textoDasTags.includes('cadastro') ||  textoDasTags.includes('documento');
     });
 
     function renderCategoryResults(itemsToRender) {
