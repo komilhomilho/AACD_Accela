@@ -46,14 +46,14 @@ export function iniciar() {
             cardElement.style.color = 'white';
 
             const displayTitle = item.titulo || item.title || item.nome || item.name || 'Serviço sem título';
-            const displayUrl = item.URL || item.link || '#';
+            const displayUrl = item.url || item.link || '#';
 
             // ATUALIZAÇÃO DE ACESSIBILIDADE AQUI:
             cardElement.setAttribute('role', 'button'); // Diz ao leitor que é um botão
             cardElement.setAttribute('tabindex', '0'); // Permite focar com a tecla TAB
             cardElement.setAttribute('aria-label', `Acessar serviço: ${displayTitle}`); // O que será lido em voz alta
 
-            // O aria-hidden="true" impede que o leitor de tela leia a URL e o título cru de novo
+            // O aria-hidden="true" impede que o leitor de tela leia a url e o título cru de novo
             cardElement.innerHTML = `
                 <div aria-hidden="true" style="min-width: 0; width: 100%;">
                     <h5 class="mb-1 text-truncate" style="color: white; width: 100%;">${displayTitle}</h5>
