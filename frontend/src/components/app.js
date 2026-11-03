@@ -260,4 +260,3 @@ if (jaViuBoasVindas) {
 }
 
 initializeApp();
-
