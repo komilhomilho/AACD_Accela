@@ -1,3 +1,4 @@
+
 import model from '../../shared/models/link.model.js';
 import redis, { ensureRedis } from '../../config/redis.js';
 
@@ -33,6 +34,7 @@ export async function invalidateChkUpdateCache() {
     try {
         if (await ensureRedis()) {
             await redis.incr(VERSION_KEY);
+            console.log("[Cache] Versão incrementada.");
         }
     } catch (error) {
         console.error("[Cache] Falha ao invalidar:", error.message);
@@ -40,22 +42,38 @@ export async function invalidateChkUpdateCache() {
 }
 
 export default async function chkUpdate(last_sync) {
-    const lastSync = new Date(last_sync);
+    const timestamp = Number(last_sync);
 
-    if (Number.isNaN(lastSync.getTime())) {
-        throw new Error("Invalid last_sync parameter.");
+    if (
+        last_sync === null ||
+        last_sync === undefined ||
+        String(last_sync).trim() === "" ||
+        !Number.isFinite(timestamp) ||
+        !Number.isSafeInteger(timestamp) ||
+        timestamp < 0
+    ) {
+        throw new Error(
+            "Invalid last_sync parameter. Expected Unix timestamp in milliseconds."
+        );
     }
 
-    const available = await ensureRedis();
+    const lastSync = new Date(timestamp);
 
-    if (!available) {
+    // 1. Verifica se o Redis está disponível.
+    const redisAvailable = await ensureRedis();
+
+    // 2. Sem Redis, consulta diretamente o MongoDB.
+    if (!redisAvailable) {
         return await checkDatabase(lastSync);
     }
 
+    let cacheKey;
+
+    // 3. Tenta encontrar o resultado no Redis.
     try {
         const version = await redis.get(VERSION_KEY) ?? "0";
 
-        const cacheKey = [
+        cacheKey = [
             "mobile",
             "check-update",
             version,
@@ -66,22 +84,30 @@ export default async function chkUpdate(last_sync) {
         const cached = await redis.get(cacheKey);
 
         if (cached !== null) {
+            console.log("[Cache] HIT");
             return cached === "1";
         }
 
-        const isUpdate = await checkDatabase(lastSync);
+        console.log("[Cache] MISS");
 
+    } catch (error) {
+        console.error("[Cache] Erro na leitura:", error.message);
+        return await checkDatabase(lastSync);
+    }
+
+    // 4. Cache vazio: consulta o MongoDB.
+    const isUpdate = await checkDatabase(lastSync);
+
+    // 5. Tenta armazenar o resultado.
+    try {
         await redis.set(
             cacheKey,
             isUpdate ? "1" : "0",
             { EX: CACHE_TTL }
         );
-
-        return isUpdate;
-
     } catch (error) {
-        console.error("[Cache] Erro:", error.message);
-
-        return await checkDatabase(lastSync);
+        console.error("[Cache] Erro ao salvar:", error.message);
     }
+
+    return isUpdate;
 }
