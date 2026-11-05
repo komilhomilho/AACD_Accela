@@ -50,7 +50,7 @@ async function switchPage(idDaPagina, registrarHistorico = true) {
     if (window.VLibras && window.VLibras.Widget) {
         window.dispatchEvent(new Event('load'));
     }
-    
+
 }
 
 async function initializeApp() {
@@ -154,6 +154,14 @@ document.addEventListener('click', async (evento) => {
             atualizarNavbar('home');
         }
     }
+    // Voltar para a página inicial ao clicar na logo
+    const logo = evento.target.closest('#logo-home');
+
+    if (logo) {
+        await window.switchPage('home');
+        atualizarNavbar('home');
+        return
+    }
 });
 
 window.addEventListener('popstate', (event) => {
@@ -207,8 +215,8 @@ function aplicarModoEscuro(ativo) {
 
     if (ativo) {
         document.body.classList.replace('bg-white', 'bg-1');
-        if (mainApp) { 
-            mainApp.classList.replace('bg-white', 'bg-1') 
+        if (mainApp) {
+            mainApp.classList.replace('bg-white', 'bg-1')
             mainApp.classList.replace("fg-black", "fg-white")
         };
 
@@ -220,7 +228,7 @@ function aplicarModoEscuro(ativo) {
         if (mainApp) mainApp.classList.replace('bg-1', 'bg-white');
 
         if (logoImg) logoImg.src = "/src/assets/img/logo_texto_preto.svg";
-        
+
         mainApp.classList.replace("fg-white", "fg-black")
         if (switchContraste) switchContraste.checked = false;
     }
@@ -250,4 +258,5 @@ if (jaViuBoasVindas) {
 } else {
     switchPage('welcome');
 }
+
 initializeApp();
