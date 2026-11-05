@@ -268,3 +268,8 @@ input {
 .bottom-nav .nav-link i {
     pointer-events: none;
 }
+
+.icon{
+    width: 35px;
+    height: 52.5px;
+}

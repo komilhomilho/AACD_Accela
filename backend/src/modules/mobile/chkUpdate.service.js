@@ -34,7 +34,7 @@ export async function invalidateChkUpdateCache() {
     try {
         if (await ensureRedis()) {
             await redis.incr(VERSION_KEY);
-            console.log("[Cache] Versão incrementada.");
+            console.log.green("[Cache] Version Increment.");
         }
     } catch (error) {
         console.error("[Cache] Falha ao invalidar:", error.message);
@@ -84,11 +84,11 @@ export default async function chkUpdate(last_sync) {
         const cached = await redis.get(cacheKey);
 
         if (cached !== null) {
-            console.log("[Cache] HIT");
+            console.log.green("[Cache] hit");
             return cached === "1";
         }
 
-        console.log("[Cache] MISS");
+        console.log.yellow("[Cache] miss");
 
     } catch (error) {
         console.error("[Cache] Erro na leitura:", error.message);
